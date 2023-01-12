@@ -1,7 +1,5 @@
 .vscode/
 
-src/public/css/
 node_modules/
 
 .env
-.husky/

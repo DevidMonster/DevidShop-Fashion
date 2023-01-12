@@ -22,7 +22,7 @@ function Header() {
     const [night, setNight] = useState()
     let mode = useSelector(state => state.active) || false
     if(localStorage.getItem('mode'))  mode = localStorage.getItem('mode') === "true" ? true : false;
-
+    console.log(1)
     const dispatch = useDispatch()
     
     const handleSwitch = () => {
