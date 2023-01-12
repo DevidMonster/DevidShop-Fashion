@@ -1,0 +1,14 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: min((100vh - 69px) - 60px, 734px);
+    min-height: 100px;
+    border-radius: 8px;
+    background-color: var(--bg-popper);
+    box-shadow: var(--border-primary) 0px 2px 12px;
+    padding: 8px 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+}

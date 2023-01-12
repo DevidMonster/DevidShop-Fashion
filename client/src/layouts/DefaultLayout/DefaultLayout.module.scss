@@ -1,0 +1,13 @@
+.content_wrapper {
+    min-height: 100vh;
+    display: flex;
+    gap: 30px;
+    z-index: 1;
+}
+
+.main_container {
+    flex: 1;
+    padding: 10px;
+    display: block;
+    overflow: hidden;
+}

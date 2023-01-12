@@ -1,0 +1,118 @@
+.wrapper,.search-result {
+    width: calc((30/100) * 100vw);
+
+}
+
+.search {
+    width: 100%;
+}
+
+.search-title {
+    font-size: 1.4rem;
+    font-weight: 600px;
+    padding: 5px 16px;
+    color: var(--text-color);
+}
+
+.search {    position: relative;
+    height: var(--search-height);
+    border: 0.5px solid transparent;
+    background-color: var(--bg-content-color);
+    border-radius: var(--search-border-radius);
+    padding-left: 16px;
+    display: flex;
+    justify-content: space-between;
+
+    input {
+        width: calc(100% - 78px);
+        background: transparent;
+        caret-color: var(--placeholder-text);
+        color: var(--text-color);
+        font-size: 1.5rem;
+        height: 100%;
+        font-weight: 500;
+        font-family: var(--font-family);
+    }
+
+    input::placeholder {
+        font-weight: 600;
+    }
+
+    input:not(:placeholder-shown) ~ .search-btn {
+        color: var(--text-color);
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: var(--search-top-spacer);
+        background-color: var(--text-color);
+        right: var(--search-button-width);
+        width: 1px;
+        height: calc(var(--search-height) - var(--search-top-spacer) * 2);
+    }
+
+    &:focus-within {
+        border-color: var(--border-primary);
+    }
+}
+
+.clear-btn,
+.loading {
+    position: absolute;
+    right: calc(var(--search-button-width) + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-color);
+    background-color: transparent;
+}
+
+.loading {
+    animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+    0% {
+        transform: translateY(-50%) rotate(0);
+    }
+    100% {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+.search-btn {
+    width: var(--search-button-width);
+    height: 100%;
+    border-top-right-radius: var(--search-border-radius);
+    border-bottom-right-radius: var(--search-border-radius);
+    font-size: 1.9rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+        cursor: pointer;
+        background-color: var(--text-item-hover);
+    }
+
+    &:active {
+        background-color: var(--bg-content-color);
+    }
+
+    &:active ~ .search {
+        border-color: transparent;
+    }
+}
+
+
+.search-box_less {
+    max-height: calc(71.5px * 2.7);
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    perspective: 1px;
+    transform-style: preserve-3d;
+}

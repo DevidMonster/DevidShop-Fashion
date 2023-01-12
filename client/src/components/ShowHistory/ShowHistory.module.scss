@@ -1,0 +1,43 @@
+.wrapper {
+    position: relative;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    padding: 9px 16px;
+    cursor: pointer;
+    transition: background-color 200ms ease-in-out 0s;
+    text-decoration: none !important;
+    &:hover {
+        background-color: var(--bg-content-color);
+    }
+}
+
+
+.title-search {
+    flex: 1;
+    margin-left: 12px;
+}
+
+
+.text {
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.icon {
+    color: var(--text-color);
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+}
+
+.delete-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+}
+

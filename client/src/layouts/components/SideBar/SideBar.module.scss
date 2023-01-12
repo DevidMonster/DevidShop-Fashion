@@ -1,0 +1,41 @@
+.sidebar_menu {
+    flex-shrink: 0;
+    max-width: 100%;
+    background-color: var(--sidebar-bg);
+    -webkit-tap-highlight-color: transparent;
+    .sidebar_wrapper {
+        overflow: hidden;
+        --width: 200px;
+        align-items: center;
+        max-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        left: 0;
+        padding: 0 8px 56px 8px;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 60px;
+        width: var(--width);
+        z-index: 8;
+    }
+}
+
+.sidebar_subnav {
+    mask-image: linear-gradient(180deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.8) 10%,#fff 80%, hsla(0,0%,100%,.8), hsla(0,0%,100%,0));
+    -webkit-mask-image: linear-gradient(180deg,hsla(0,0%,100%,0),hsla(0,0%,100%,.8) 10%,#fff 80%, hsla(0,0%,100%,.8), hsla(0,0%,100%,0));
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    perspective: 1px;
+    transform-style: preserve-3d;
+
+    &::-webkit-scrollbar-thumb {
+        display: none;
+    }
+
+    &:hover::-webkit-scrollbar-thumb {
+        display: block;
+    }
+}
