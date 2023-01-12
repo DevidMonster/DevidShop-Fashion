@@ -72,16 +72,19 @@ function Search() {
     
     const handleNavigate = () => {
         if(searchValue !== "") {
-            let searchHistory = []
-            searchHistory = [searchValue]
-            if(!!searchData) {
-                searchHistory = [searchValue, ...searchData]
+            if(!searchData.includes(searchValue)) {
+                let searchHistory = []
+                searchHistory = [searchValue]
+                if(!!searchData) {
+                    searchHistory = [searchValue, ...searchData]
+                }
+                localStorage.setItem("searchHistory", JSON.stringify(searchHistory))
+                setSearchData(searchHistory)
             }
-            localStorage.setItem("searchHistory", JSON.stringify(searchHistory))
-            setSearchData(searchHistory)
             setSearchValue("")
             setShowResult(false)
-            navigate(`/product/${searchValue}`)
+            navigate(`/product?search=${searchValue}`)
+
         }
     }
 
