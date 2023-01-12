@@ -1,0 +1,24 @@
+.current-time {
+    font-size: 1.4rem;
+    font-weight: 500;
+
+    .time {
+         color: var(--text-color);
+    }
+
+    .day-state {
+         display: inline-block;
+         font-size: 2rem;
+         animation: textRotate 4s linear infinite;
+    }
+}
+
+
+@keyframes textRotate {
+    0% {
+         transform: rotate(0);
+    }
+    100% {
+         transform: rotate(360deg);
+    }
+}

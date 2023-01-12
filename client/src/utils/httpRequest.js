@@ -4,7 +4,7 @@ axios.defaults.headers.common['Content-Type'] = 'application/json';
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 const httpRequest = axios.create({
-    baseURL: process.env.BASE_URL,
+    baseURL: process.env.REACT_APP_BASE_URL,
 })
 
 export const get = async (path, option = {}) => {

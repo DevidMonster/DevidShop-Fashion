@@ -9,20 +9,18 @@ import { switchMode } from "../../../redux/actions";
 
 import images from "../../../asset/images";
 
-import { useEffect, useState } from "react";
+
 import Button from "../../../components/Button/Button";
 import Search from "./Search";
+import Timer from "./Timer";
 
 
 const cx = classNames.bind(styles)
 
 function Header() {
     const user = true  //localStorage.getItem("user") || false
-    const [time, setTime] = useState("")
-    const [night, setNight] = useState()
     let mode = useSelector(state => state.active) || false
     if(localStorage.getItem('mode'))  mode = localStorage.getItem('mode') === "true" ? true : false;
-    console.log(1)
     const dispatch = useDispatch()
     
     const handleSwitch = () => {
@@ -35,27 +33,7 @@ function Header() {
             </Wrapper>
         </div>
     );
-    useEffect(() => {
-        const currentTimeSet = setInterval(() => {
-          const currentTime = new Date();
-          const currentHours = currentTime.getHours()
-
-          if(currentHours >= 18 && currentHours < 5 && mode === false) {
-            dispatch(switchMode(false));
-          }
-          
-          if(currentHours >= 5 && currentHours < 18 && mode === true && !localStorage.getItem('mode')) {
-            dispatch(switchMode(true));
-          }
-          
-          setNight(currentHours >= 5 && currentHours < 18 ? false : true)
-          setTime(currentTime.toLocaleTimeString(undefined, {hour: '2-digit', minute: '2-digit'}));
-        }, 1000);
-      
-        // Trả về một hàm để clearInterval khi component unmount
-        return () => clearInterval(currentTimeSet);
-    });
-
+    
     const renderResult = (attrs) => (
         <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
             <Wrapper>
@@ -73,7 +51,7 @@ function Header() {
         </div>
         <Search />
         <div className={cx('action_box')}>
-            <div className={cx('current-time')}><span className={cx('time')}>{time}</span> <span className={cx('day-state')}>{night ? '🌑' : '🌞'}</span></div>
+            <Timer/>
             <div className={cx("mode")}>
                 <label htmlFor="switch" className={cx("switch-mode")}>
                     <input type="checkbox" id="switch" className={cx("switch-checkbox")} checked={mode} onChange={e => handleSwitch()}/>
