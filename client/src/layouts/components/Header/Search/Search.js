@@ -17,7 +17,7 @@ import SearchHistory from './SearchHistory';
 
 const cx = classNames.bind(styles)
 
-function Search() {
+function Search({ className }) {
     let state = useSelector(state => state) || false
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
@@ -98,9 +98,10 @@ function Search() {
     const inputRef = useRef();
     
     return ( 
-        <div className={cx("wrapper")}>
+        <div className={cx("wrapper", { [className]: className})}>
             <HeadlessTippy
                 interactive
+                placement='bottom'
                 theme={state.active ? 'light' : 'material'}
                 // eslint-disable-next-line
                 visible={showResult && searchResult.length > 0 || showResult && searchData.length > 0}

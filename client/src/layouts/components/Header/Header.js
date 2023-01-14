@@ -1,18 +1,19 @@
 import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
 
-import Tippy from '@tippyjs/react/headless';
-import { useDispatch, useSelector } from "react-redux";
-import { BsCart2, FaBell, FaUserCircle } from '../../../asset/icons';
-import { Wrapper } from "../../../components/popper";
-import { switchMode } from "../../../redux/actions";
+import { useSelector } from "react-redux";
 
+import { BsSearch, AiOutlineLeft,AiOutlineMenu } from "../../../asset/icons"
 import images from "../../../asset/images";
 
-
-import Button from "../../../components/Button/Button";
+import Button from "../../../components/Button";
 import Search from "./Search";
-import Timer from "./Timer";
+import Timer from "../../../components/Timer";
+import Account from "./Account";
+import Notification from "./Notification";
+import SwitchMode from "../../../components/SwitchMode";
+import CartAlert from "./CartAlert";
+import { useRef } from "react";
 
 
 const cx = classNames.bind(styles)
@@ -21,82 +22,43 @@ function Header() {
     const user = true  //localStorage.getItem("user") || false
     let mode = useSelector(state => state.active) || false
     if(localStorage.getItem('mode'))  mode = localStorage.getItem('mode') === "true" ? true : false;
-    const dispatch = useDispatch()
-    
-    const handleSwitch = () => {
-        dispatch(switchMode(mode))
-    }
 
-    const renderAlert = (attrs) => (
-        <div className={cx('alert-list')} tabIndex="-1" {...attrs}>
-            <Wrapper>
-            </Wrapper>
-        </div>
-    );
+    const toggleClass = () => {
+        console.log(1)
+        search.current.classList.toggle(cx("show_search_box"))
+    }
     
-    const renderResult = (attrs) => (
-        <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-            <Wrapper>
-                <Button className={cx("fix")} leftIcon={<FaUserCircle />} text to={'/account'}>Tài Khoản</Button> 
-            </Wrapper>
-        </div>
-    );
+    const search = useRef()
+
 
     return <header className={cx('header_wrapper')}>
+        <div className={cx("menu_toggle")}>
+            <AiOutlineMenu/>
+        </div>
         <div className={cx('logo_box')} >
             <Button text normal className={cx("logo_navigate")} to={"/"}>
                 <img src={mode ? images.logo_white : images.logo} alt="Logo" />
-                <span><h2>DevidShop || Fashion</h2></span>
+                <span className={cx('logo_title')}><h2>DevidShop || Fashion</h2></span>
             </Button>
         </div>
-        <Search />
+        <div className={cx('box_search_popup')} ref={search}>
+            <Button className={cx('close_search')} icon={<AiOutlineLeft/>} onClick={toggleClass}/>
+            <div  className={cx('search_popup')}>
+                <Search/>
+            </div>
+        </div>
+        <div className={cx("btn_search")}>
+            <Button icon={<BsSearch />} onClick={toggleClass}/>
+        </div>
         <div className={cx('action_box')}>
             <Timer/>
-            <div className={cx("mode")}>
-                <label htmlFor="switch" className={cx("switch-mode")}>
-                    <input type="checkbox" id="switch" className={cx("switch-checkbox")} checked={mode} onChange={e => handleSwitch()}/>
-                    <span className={cx("change_state_mode")}></span>
-                </label>
+            <div className={cx('theme_action')}>
+                <SwitchMode/>
             </div>
-            <div className={cx("cart_view")}>
-                <Button icon={<BsCart2/>} to={"/cart"}/>
-                <span className={cx("total_item")}>0</span>
-            </div>
-            <div>
-                <div className={cx("notification")}>
-                <div>
-                    <Tippy
-                        interactive
-                        hideOnClick
-                        theme={mode ? 'light' : 'material'}
-                        trigger="click"
-                        placement="bottom-end"
-                        render={(attrs) => renderAlert(attrs)}
-                    >
-                            <div><Button icon={<FaBell />} /></div>
-                    </Tippy>
-                </div>
-                        <span className={cx("total_alert")}>0</span>
-                    </div>
-           </div>
+            <CartAlert/>
+            <Notification/>
             {user ? (
-                <div>
-                    <Tippy
-                        interactive
-                        hideOnClick
-                        theme={mode ? 'light' : 'material'}
-                        trigger="click"
-                        placement="bottom-end"
-                        render={(attrs) => renderResult(attrs)}
-                    >
-                        <div className={cx("account")}>
-                                <div className={cx("avatar")}>
-                                    <img src={images.user} alt="User_Avatar"/>
-                                </div>
-                                <p>DevidMonster</p>
-                        </div>
-                    </Tippy>
-                </div>
+                <Account/>
             ) : (
                 <div className={cx("signIn_signUp")}>
                         <Button outline small>SignIn</Button>

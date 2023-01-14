@@ -2,7 +2,7 @@ import styles from './Timer.module.scss';
 import classNames from 'classnames/bind';
 
 import { useDispatch, useSelector } from "react-redux";
-import { switchMode } from "../../../../redux/actions";
+import { switchMode } from "../../redux/actions";
 import { useEffect, useState } from "react";
 
 const cx = classNames.bind(styles)

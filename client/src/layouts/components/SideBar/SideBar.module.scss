@@ -1,6 +1,5 @@
 .sidebar_menu {
-    flex-shrink: 0;
-    max-width: 100%;
+    flex: 0;
     background-color: var(--sidebar-bg);
     -webkit-tap-highlight-color: transparent;
     .sidebar_wrapper {
@@ -37,5 +36,12 @@
 
     &:hover::-webkit-scrollbar-thumb {
         display: block;
+    }
+}
+
+@media (max-width: 991px) {
+    .sidebar_menu {
+        flex: unset;
+        width: 60px;
     }
 }

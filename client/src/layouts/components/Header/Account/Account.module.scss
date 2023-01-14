@@ -1,0 +1,132 @@
+.account {
+    width: 181px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    gap: 10px;
+    transition: background-color 0.3s ease-in-out;
+    border-radius: 25px;
+    padding: 5px;
+
+    &:hover {
+     background-color: var(--bg-content-color);
+     }
+
+     h3 {
+          width: 88px;
+          font-size: 1.4rem;
+          font-weight: 600;
+          color: var(--text-color);
+          text-overflow: ellipsis;
+          overflow: hidden;
+     }
+}
+
+.avatar {
+     display: flex;
+     align-items: center;
+     img {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+     }
+}
+
+
+
+.account_nav {
+     display: flex;
+     align-items: center;
+     padding: 9px 17px;
+     gap: 10px;
+     text-decoration: none;
+     .User_Name {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          color: var(--text-color);
+          
+          h3 {
+               flex: 1;
+               width: 88px;
+               font-size: 1.4rem;
+               font-weight: 600;
+               color: var(--text-color);
+               text-overflow: ellipsis;
+               overflow: hidden;
+          }
+
+          .arrow_right {
+               transition: 0.5s ease-in-out;
+               font-size: 1.4rem;
+          }
+
+          span {  
+               width: 100%;
+          }
+     }
+
+     &:hover {
+          background-color: var(--bg-content-color);
+
+          .arrow_right {
+               transform: translateX(50%);
+          }
+     }
+}
+
+
+
+.menu-list {
+    width: 200px;
+}
+
+.fix {
+     width: 100%;
+
+    & span:first-child {
+         font-size: 2rem;
+    }
+
+    & span:nth-child(2) {
+         text-align: left;
+    }
+
+    & span:nth-child(3) {
+         font-size: 2rem;
+    }
+}
+
+
+.multi_page_renderer {
+     background-color: transparent;
+     border-top: 1px solid var(--bg-content-color);
+}
+
+.showed_group {
+     display: none;
+}
+/* tablet nomal destop: 992px */
+/* tablet && mobile */
+@media (max-width: 991px) { 
+     .account {
+          width: unset;
+          h3 {
+               display: none;
+          }
+     }
+}
+
+/* tablet desktop: 768px */
+/* mobile */
+@media (max-width: 767px) {
+
+}
+
+@media (max-width: 660px) {
+     .showed_group {
+          display: block;
+     }
+}

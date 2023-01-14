@@ -1,0 +1,17 @@
+.cart_view {
+    display: inline-block;
+    position: relative;
+    .total_item {
+         position: absolute;
+         display: block;
+         width: 20px;
+         height: 20px;
+         text-align: center;
+         line-height: 20px;
+         border-radius: 50%;
+         background-color: var(--bg-notice);
+         color: var(--text-bg);
+         top: -5px;
+         right: -5px;
+    }
+}

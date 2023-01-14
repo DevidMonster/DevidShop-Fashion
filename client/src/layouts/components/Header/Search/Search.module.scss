@@ -116,3 +116,10 @@
     perspective: 1px;
     transform-style: preserve-3d;
 }
+
+@media (max-width: 660px) {
+    .wrapper,.search-result {
+        width: calc((80/100) * 100vw);
+
+    } 
+}
