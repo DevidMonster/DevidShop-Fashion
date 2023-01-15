@@ -8,7 +8,7 @@ function BoxContent() {
     const navigate = useNavigate()
 
     return ( 
-        <div className={cx("wrapper")}>
+        <div className={cx("wrapper", { menu_toggle: true })}>
             <div className={cx("content_box")}>
                 <p className={cx('title')}>
                     50% off all orders now

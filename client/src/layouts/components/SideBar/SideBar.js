@@ -1,15 +1,20 @@
 import styles from './SideBar.module.scss';
 import classNames from 'classnames/bind';
+
+import { useSelector } from 'react-redux';
 import GroupMenu, { MenuItem } from './GroupMenu';
-import {  } from 'react-icons/ai';
-import { AiFillHome, AiFillPhone, FaTshirt, BiNews, HiUserGroup, TbShoppingCartDiscount, MdOutlineFavoriteBorder, MdOndemandVideo } from '../../../asset/icons';
 import BoxContent from './BoxContent';
+
+import { AiFillHome, AiFillPhone, FaTshirt, BiNews, HiUserGroup, TbShoppingCartDiscount, MdOutlineFavoriteBorder, MdOndemandVideo } from '../../../asset/icons';
 
 const cx = classNames.bind(styles)
 
 function SideBar() {
+
+    let toggleMode = useSelector(state => state.toggle_mode) || false
+
     return (
-        <aside className={cx("sidebar_menu")}>
+        <aside className={cx("sidebar_menu", { sidebar_menu_toggle: toggleMode })}>
             <div className={cx("sidebar_wrapper")}>
                 <GroupMenu title={"Page"} border_bot>
                     <MenuItem to={"/"} icon={<AiFillHome />} title={"Home"}/>

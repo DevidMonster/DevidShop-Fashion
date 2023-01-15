@@ -39,7 +39,37 @@
 
 @media (max-width: 991px) {
     .sidebar_menu {
+        position: absolute;
+        background: var(--sidebar-popup-bg);
+        z-index: 12;
+        height: 100%;
+        transition: 0.3s ease-in-out;
+    }
+    .sidebar_menu_toggle {
+        position: unset;
         flex: unset;
-        width: 60px;
+        width: 80px;
+        .sidebar_wrapper {
+            padding: 0 4px 56px 4px;
+        }
+    }
+}
+
+@media (max-width: 660px) {
+    .sidebar_menu {
+        animation: toggle 0.5s ease-in-out;
+
+    }
+    .sidebar_menu_toggle {
+        display: none;
+    }
+}
+
+@keyframes toggle {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
     }
 }

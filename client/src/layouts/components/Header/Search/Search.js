@@ -28,21 +28,16 @@ function Search({ className }) {
     
     const navigate = useNavigate()
 
-
-    useEffect(()=> {
-        if(!!state.data) {
-            setSearchData(state.data)
-        }
-    }, [state.data])
-
-    useEffect( () => {
-        if (!resultValue.trim()) {
+    useEffect(() => {
+        if (!searchValue.trim()) {
             setSearchResult([]);
+            setShowSpinner(false)
             return;
         }
 
         const fetchAPI = async () => {
             setShowSpinner(true);
+            console.log("pending")
             const dataResult = await request.get("/item", {
                 params: {
                     search: resultValue
@@ -54,6 +49,14 @@ function Search({ className }) {
         }
         fetchAPI()
     }, [resultValue])
+
+    useEffect(()=> {
+        if(!!state.data) {
+            setSearchData(state.data)
+        }
+    }, [state.data])
+
+    
 
     const handleClear = () => {
         setSearchValue('');

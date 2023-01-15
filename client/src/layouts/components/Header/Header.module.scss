@@ -33,7 +33,12 @@
      &:hover {
           background-color: var(--bg-content-color);
      }
+     &:active {
+          background-color: var(--text-item-hover);
+     }
 }
+
+
 
 .box_search_popup {
      display: flex;
@@ -109,16 +114,16 @@
      .action_box {
           width: 300px;
      }
-
+ .menu_toggle {
+          display: flex;
+     }
 }
 
 /* tablet desktop: 768px */
 /* mobile */
 @media (max-width: 767px) {
 
-     .menu_toggle {
-          display: flex;
-     }
+    
 }
 
 @media (max-width: 660px) {

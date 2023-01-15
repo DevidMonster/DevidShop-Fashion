@@ -59,3 +59,30 @@
         background-color: var(--bg-content-color);
     }
 }
+
+@media (max-width: 991px) {
+    .group_toggle {
+        h2 {
+            display: none;
+        }
+        .menu-item {
+            gap: unset;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+
+            .icon {
+                font-size: 2rem;
+                padding: unset;
+                text-align: center;
+            }
+            .menu-title {
+                font-size: 1.3rem;
+                text-align: center;
+            }
+
+        }
+    }
+}

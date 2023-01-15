@@ -19,6 +19,13 @@ const rootReducer = (state = initState, action) => {
                 // Thêm thuộc tính URL mới vào state
                 prevUrl: action.payload,
             };
+        case "TOGGLE":
+            let toggle = !action.payload
+            // localStorage.setItem('mode', toggle)
+            return {
+                ...state,
+                toggle_mode: toggle,
+            };
         case "DELETE_SEARCH":
             let currentData = JSON.parse(localStorage.getItem("searchHistory")) || []
             if(currentData.length === 1) {

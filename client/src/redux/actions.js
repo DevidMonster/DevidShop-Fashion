@@ -18,3 +18,11 @@ export const deleteSearch = (data) => {
         payload: data
     }
 }
+
+
+export const menuToggle = (data) => {
+    return {
+        type: 'TOGGLE',
+        payload: data
+    }
+}
