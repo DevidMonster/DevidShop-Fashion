@@ -45,7 +45,7 @@ function Search({ className }) {
             setShowSpinner(true);
             const dataResult = await request.get("/item", {
                 params: {
-                    name: resultValue
+                    search: resultValue
                 },
             })
             setSearchResult(dataResult)

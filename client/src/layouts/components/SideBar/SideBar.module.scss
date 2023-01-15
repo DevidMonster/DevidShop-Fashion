@@ -1,10 +1,9 @@
 .sidebar_menu {
-    flex: 0;
+    width: 200px;
     background-color: var(--sidebar-bg);
     -webkit-tap-highlight-color: transparent;
     .sidebar_wrapper {
         overflow: hidden;
-        --width: 200px;
         align-items: center;
         max-height: 100vh;
         display: flex;
@@ -15,7 +14,6 @@
         position: -webkit-sticky;
         position: sticky;
         top: 60px;
-        width: var(--width);
         z-index: 8;
     }
 }
