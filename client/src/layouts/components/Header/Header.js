@@ -40,9 +40,6 @@ function Header() {
 
 
     return <header className={cx('header_wrapper')}>
-        <div className={cx(!toggleMode === true ? 'background-sideBar' : 'none')}>
-
-        </div>
         <div className={cx("menu_toggle")} onClick={handleToggleMenu}>
             <AiOutlineMenu/>
         </div>
