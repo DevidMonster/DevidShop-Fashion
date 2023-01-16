@@ -8,6 +8,7 @@ import SideBar from "../components/SideBar";
 import { useDispatch, useSelector } from "react-redux";
 import { menuToggle } from "../../redux/actions";
 
+
 const cx = classNames.bind(styles)
 
 function DefaultLayout({ children }) {
@@ -18,7 +19,6 @@ function DefaultLayout({ children }) {
     const handleColseMenu = () => {
         dispatch(menuToggle(toggleMode))
     }
-
 
     return (      
         <div>

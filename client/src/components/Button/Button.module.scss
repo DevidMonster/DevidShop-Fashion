@@ -20,6 +20,11 @@
         text-align: center;
     }
 
+    .icon {
+        display: flex;
+        justify-content: center;
+    }
+
     + .wrapper {
         margin-left: 5px;
     }
@@ -115,8 +120,3 @@
     }
 }
 
-.icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
