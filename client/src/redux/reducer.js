@@ -54,8 +54,9 @@ const reducers = createSlice({
     },
     reducers: {
         switchMode: (state, action) => {
-            localStorage.setItem('mode', !action.payload)
-            state.active = !action.payload
+            let newState = !action.payload
+            localStorage.setItem('mode', newState)
+            state.active = !state.active
         },
         saveURL: (state, action) => {
             localStorage.setItem('prevUrl', action.payload);
