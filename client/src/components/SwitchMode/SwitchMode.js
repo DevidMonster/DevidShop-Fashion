@@ -1,7 +1,8 @@
 import styles from './SwitchMode.module.scss';
 import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from "react-redux";
-import { switchMode } from "../../redux/actions";
+// import { switchMode } from "../../redux/actions";
+import reducers from '../../redux/reducer';
 
 const cx = classNames.bind(styles)
 
@@ -12,7 +13,7 @@ function SwitchMode() {
     
 
     const handleSwitch = () => {
-        dispatch(switchMode(mode))
+        dispatch(reducers.actions.switchMode(mode))
     }
 
     return ( 

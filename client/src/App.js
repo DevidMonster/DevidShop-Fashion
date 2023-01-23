@@ -6,18 +6,20 @@ import DefaultLayout from "./layouts/DefaultLayout";
 import { publicRoutes } from "./routes";
 import { BrowserRouter as Router,Routes, Route } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-import { menuToggle } from "./redux/actions";
+
+//import { menuToggle } from "./redux/actions";
 import ResizeDetector from 'react-resize-detector';
 // import { saveURL } from './redux/actions';
-import CheckURL from './components/CheckURL';
+ import CheckURL from './components/CheckURL';
+import reducers from './redux/reducer';
+import { screenModeSelector, toggleSideBarSelector } from './redux/selectors';
 
 const cx = classNames.bind(styles)
 
 function App() {
   
-  let state = useSelector(state => state) || false
-  let mode = state.active
-  let toggle = state.toggle_mode || false
+  let mode = useSelector(screenModeSelector)
+  let toggle = useSelector(toggleSideBarSelector) || false
   // let url = useSelector(state => state.currentURL)
   if(localStorage.getItem('mode'))  mode = localStorage.getItem('mode') === "true" ? true : false;
   
@@ -33,7 +35,7 @@ function App() {
   
   const handleResize = () => {
     if(toggle === false) {
-      dispatch(menuToggle(toggle))
+      dispatch(reducers.actions.menuToggle(toggle))
     }
 }
 

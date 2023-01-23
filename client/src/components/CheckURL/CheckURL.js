@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom'
 import { useDispatch } from "react-redux";
 import { useEffect, useState, memo } from 'react';
-import { saveURL } from '../../redux/actions';
+import reducers from '../../redux/reducer';
 
 function CheckURL() {
     const [prevUrl, setPrevUrl]= useState(localStorage.getItem("prevUrl") ||  '/')
@@ -13,7 +13,7 @@ function CheckURL() {
     useEffect(() => {
       // Hàm này sẽ được chạy mỗi khi pathname thay đổi và sẽ lưu pathname trước đó
       setPrevUrl(location.pathname)
-      dispatch(saveURL(prevUrl));
+      dispatch(reducers.actions.saveURL(prevUrl));
 
       // eslint-disable-next-line
     }, [location.pathname]);

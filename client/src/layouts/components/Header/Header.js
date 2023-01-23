@@ -14,26 +14,27 @@ import CartAlert from "./CartAlert";
 
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { menuToggle } from "../../../redux/actions";
+// import { menuToggle } from "../../../redux/actions";
+import reducers from "../../../redux/reducer";
+import { screenModeSelector, toggleSideBarSelector } from "../../../redux/selectors";
 
 const cx = classNames.bind(styles)
 
 function Header() {
     const user = true  //localStorage.getItem("user") || false
-    let mode = useSelector(state => state.active) || false
+    let mode = useSelector(screenModeSelector) || false
     if(localStorage.getItem('mode'))  mode = localStorage.getItem('mode') === "true" ? true : false;
     
-    let toggleMode = useSelector(state => state.toggle_mode) || false
+    let toggleMode = useSelector(toggleSideBarSelector)
 
     const dispatch = useDispatch()
 
     const toggleClass = () => {
-        console.log(1)
         search.current.classList.toggle(cx("show_search_box"))
     }
 
     const handleToggleMenu = () => {
-        dispatch(menuToggle(toggleMode))
+        dispatch(reducers.actions.menuToggle(toggleMode))
     }
     
     const search = useRef()

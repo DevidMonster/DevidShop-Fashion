@@ -1,0 +1,34 @@
+.size_box {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--text-color);
+
+    & + .size_box {
+        margin-left: 10px;
+    }
+}
+
+.size_input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    &:checked + .size_title{
+        background-color: var(--bg-content-color); 
+    }
+}
+ 
+.size_title {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    line-height: 35px;
+    text-align: center;
+    background-color: transparent;
+    transition: all 0.2s ease-in-out;
+}

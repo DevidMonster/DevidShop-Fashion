@@ -2,8 +2,9 @@ import classNames from 'classnames/bind';
 import styles from './ShowHistory.module.scss';
 import { Link } from 'react-router-dom';
 import { BiTimeFive, MdOutlineCancel } from '../../asset/icons';
-import { deleteSearch } from '../../redux/actions';
+// import { deleteSearch } from '../../redux/actions';
 import { useDispatch } from 'react-redux';
+import reducers from '../../redux/reducer';
 
 const cx = classNames.bind(styles);
 
@@ -11,7 +12,7 @@ function ShowHistory({ index , data }) {
     const dispatch = useDispatch()
 
     const handleDelete = () => {
-        dispatch(deleteSearch(index))    
+        dispatch(reducers.actions.deleteSearch(index))    
     }
 
     return (

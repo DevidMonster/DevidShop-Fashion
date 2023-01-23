@@ -5,8 +5,8 @@ import classNames from 'classnames/bind';
 
 // import { Swiper, SwiperSlide } from 'swiper/react';
 
-import NextButton from './NextButton'
-import PrevButton from './PrevButton'
+import NextButton from '../../../components/Slick/NextButton'
+import PrevButton from '../../../components/Slick/PrevButton'
 
 import Slider  from 'react-slick';
 import "slick-carousel/slick/slick.scss";
@@ -70,7 +70,6 @@ function Banner() {
     useEffect(() => {
         const fetchAPI = async () => {
             const dataResult = await request.get("/banner")
-            console.log(dataResult)
             setData(dataResult)
         }
         fetchAPI()
@@ -82,6 +81,7 @@ function Banner() {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
+        useURLhash: true,
         autoplaySpeed: 5000,
         prevArrow: <PrevButton/>,
         nextArrow: <NextButton/>
@@ -99,8 +99,8 @@ function Banner() {
             <Slider
                 {...settings}
             >
-                {data.map((banner, index) => ( 
-                    <div key={index} >
+                {data.map((banner) => ( 
+                    <div key={banner._id} >
                         <div className={cx('banner')} style={{ background: banner.background }}>
                             <div className={cx('Slideshow_left')}>
                                 <h2 className={cx('Slideshow_heading')}>

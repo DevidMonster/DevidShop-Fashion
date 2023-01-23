@@ -2,6 +2,7 @@ import styles from './SideBar.module.scss';
 import classNames from 'classnames/bind';
 
 import { useSelector } from 'react-redux';
+import { toggleSideBarSelector } from '../../../redux/selectors';
 import GroupMenu, { MenuItem } from './GroupMenu';
 import BoxContent from './BoxContent';
 
@@ -11,8 +12,8 @@ const cx = classNames.bind(styles)
 
 function SideBar() {
 
-    let toggleMode = useSelector(state => state.toggle_mode) || false
-
+    let toggleMode = useSelector(toggleSideBarSelector)
+   
     return (
         <aside className={cx("sidebar_menu", { sidebar_menu_toggle: toggleMode })}>
             <div className={cx("sidebar_wrapper")}>

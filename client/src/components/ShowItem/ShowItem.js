@@ -7,13 +7,13 @@ const cx = classNames.bind(styles);
 function ShowItem({ data }) {
     return (
         <Link to={`/detail?id=${data._id}`} className={cx('wrapper')}>
-            <img className={cx('image')} src={data.images} alt={data.name}/>
+            <img className={cx('image')} src={data.images[0]} alt={data.name}/>
             <div className={cx('info')}>
                 <h4 className={cx('name')}>
                     {data.name}
                 </h4>
                 <p className={cx('price')}>
-                    {data.price}$
+                    {data.price} VNĐ
                 </p>
             </div>
         </Link>

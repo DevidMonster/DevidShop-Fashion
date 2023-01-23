@@ -6,18 +6,19 @@ import Footer from "../components/Footer";
 import SideBar from "../components/SideBar";
 
 import { useDispatch, useSelector } from "react-redux";
-import { menuToggle } from "../../redux/actions";
-
+// import { menuToggle } from "../../redux/actions";
+import reducers from "../../redux/reducer";
+import { toggleSideBarSelector } from "../../redux/selectors";
 
 const cx = classNames.bind(styles)
 
 function DefaultLayout({ children }) {
 
-    let toggleMode = useSelector(state => state.toggle_mode) || false
+    let toggleMode = useSelector(toggleSideBarSelector) || false
     const dispatch = useDispatch()
 
     const handleColseMenu = () => {
-        dispatch(menuToggle(toggleMode))
+        dispatch(reducers.actions.menuToggle(toggleMode))
     }
 
     return (      

@@ -18,7 +18,7 @@ import SearchHistory from './SearchHistory';
 const cx = classNames.bind(styles)
 
 function Search({ className }) {
-    let state = useSelector(state => state) || false
+    let state = useSelector(state => state.mainReducer) || false
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(false);
@@ -37,7 +37,6 @@ function Search({ className }) {
 
         const fetchAPI = async () => {
             setShowSpinner(true);
-            console.log("pending")
             const dataResult = await request.get("/item", {
                 params: {
                     search: resultValue
