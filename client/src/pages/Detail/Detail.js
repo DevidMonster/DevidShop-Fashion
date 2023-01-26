@@ -13,6 +13,8 @@ import * as request from '../../utils/httpRequest';
 import ImageSilde from './ImageSilde';
 import TitleBox from './TitleBox';
 import SizePick from './SizePick';
+import ColorPick from './ColorPick';
+import QuantityBox from './QuantityBox';
 
 const cx = classNames.bind(styles)
 
@@ -53,18 +55,27 @@ function Detail() {
                         <ImageSilde data={data.images}/>
                     </div>
                     <div className={cx('item-description')}>
-                        <TitleBox title={"Name: "}>
+                        <TitleBox title={"Name "}>
                             <h2 className={cx('item_name')}>{data.name}</h2>
                         </TitleBox>
-                        <TitleBox title={"Price: "}>
+                        <TitleBox title={"Price "}>
                             <p className={cx('item_price')}>{data.price} VNĐ</p>
                         </TitleBox>
-                        <TitleBox title={"Description: "}>
+                        <TitleBox title={"Description "}>
                             <p className={cx('item_description')}>{data.description}</p>
                         </TitleBox>
-                        <TitleBox title={"Size: "}>
-                            <SizePick data={data.sizes}/>
+                        <div className={cx('options_detail')}>
+                            <TitleBox title={"Size "}>
+                                <SizePick data={data.sizes}/>
+                            </TitleBox>
+                            <TitleBox title={"Color "}>
+                                <ColorPick data={data.colors}/>
+                            </TitleBox>
+                        </div>
+                        <TitleBox title={"Quantity "}>
+                            <QuantityBox quantity={data.quantity}/>
                         </TitleBox>
+                        <Button large>Add to cart</Button>
                     </div>
                 </div>
                 <div className={cx('description_box')}>

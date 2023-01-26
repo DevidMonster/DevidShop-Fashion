@@ -11,4 +11,5 @@ export * from 'react-icons/tb'
 export * from 'react-icons/md'
 export * from 'react-icons/gr'
 export * from 'react-icons/gi'
-export * from 'react-icons/go'  
+export * from 'react-icons/go' 
+export * from 'react-icons/ri'; 

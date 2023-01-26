@@ -25,7 +25,9 @@
     height: 270px;
     display: flex;
     overflow: hidden;
-
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    
     .Slideshow_left {
         color: #fff;
         display: flex;

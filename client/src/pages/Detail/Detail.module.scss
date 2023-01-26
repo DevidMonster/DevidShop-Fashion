@@ -33,4 +33,13 @@
 
     }
 
+    .options_detail {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        & > div {
+            flex: 1;
+        }
+    }
 }

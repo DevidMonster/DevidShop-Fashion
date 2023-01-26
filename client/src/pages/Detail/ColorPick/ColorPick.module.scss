@@ -1,0 +1,39 @@
+.color_box {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--text-color);
+
+    & + .color_box {
+        margin-left: 10px;
+    }
+}
+
+.color_input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + .color_title{
+        border: 1px solid var(--text-color);
+        top: 3px;
+        left: 3px;
+        bottom: 3px;
+        right: 3px;
+    }
+}
+ 
+.color_title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 50%;
+    transition: all 0.2s ease-in-out;
+}
