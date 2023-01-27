@@ -4,6 +4,7 @@
     .slide_top {
         width: 100%;
         height: 480px;
+        transition: all 0.5s ease-in-out;
 
         .main_image {
             width: 100%;
@@ -42,6 +43,36 @@
                     padding: unset;
                 }
             }
+        }
+    }
+}
+
+@media (max-width: 886px) {
+    .image_slideShow {
+
+        .slide_top {
+            height: 350px;
+        }
+    }
+}
+
+
+@media (max-width: 768px) {
+    .image_slideShow {
+
+        .slide_top {
+            height: 500px;
+        }
+    }
+
+}
+
+
+@media (max-width: 660px) {
+    .image_slideShow {
+
+        .slide_top {
+            height: 450px;
         }
     }
 }

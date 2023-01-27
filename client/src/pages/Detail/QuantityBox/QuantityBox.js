@@ -30,11 +30,14 @@ function QuantityBox({ quantity }) {
 
     return (  
         <div className={cx('wrapper')}>
-            <Button text icon={<RiArrowDownSLine/>} onClick={handleDecrease} className={cx('des_btn')}/>
-            <div className={cx('number')}>
-                <input type={"number"} value={number} onChange={e => changeQuantity(e)} className={cx('quantity_input')}/>
+            <div className={cx('action')}>
+                <Button text icon={<RiArrowDownSLine/>} onClick={handleDecrease} className={cx('des_btn')}/>
+                <div className={cx('number')}>
+                    <input type={"number"} value={number} onChange={e => changeQuantity(e)} className={cx('quantity_input')}/>
+                </div>
+                <Button text icon={<RiArrowUpSLine/>} onClick={handleIncrease} className={cx('inc_btn')}/>
             </div>
-            <Button text icon={<RiArrowUpSLine/>} onClick={handleIncrease} className={cx('inc_btn')}/>
+            <p>Number of products: {quantity}</p>
         </div>
     );
 }
