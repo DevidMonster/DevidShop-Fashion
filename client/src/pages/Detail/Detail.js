@@ -15,6 +15,7 @@ import TitleBox from './TitleBox';
 import SizePick from './SizePick';
 import ColorPick from './ColorPick';
 import QuantityBox from './QuantityBox';
+import ReviewBox from './ReviewBox';
 
 const cx = classNames.bind(styles)
 
@@ -78,10 +79,8 @@ function Detail() {
                         <Button large>Add to cart</Button>
                     </div>
                 </div>
-                <div className={cx('description_box')}>
-
-                </div>
-                <div className={cx('comment_box')}>
+                <div className={cx('item_des_rate_box')}>
+                    <ReviewBox/>
                 </div>
             </div>
             <div className={cx('bottom')}>

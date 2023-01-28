@@ -65,8 +65,7 @@ function ImageSilde({ data = [] }) {
                         </div>
                     ))}
                 </Slider>
-           </div>
-            
+           </div>   
         </div>
     );
 }
