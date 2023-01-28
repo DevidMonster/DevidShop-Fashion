@@ -79,7 +79,7 @@ function Detail() {
                         <Button large>Add to cart</Button>
                     </div>
                 </div>
-                <div className={cx('item_des_rate_box')}>
+                <div className={cx('item_review_box')}>
                     <ReviewBox/>
                 </div>
             </div>

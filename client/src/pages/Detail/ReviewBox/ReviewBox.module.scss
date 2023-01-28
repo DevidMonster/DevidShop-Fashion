@@ -1,0 +1,23 @@
+.action_nav_head {
+    display: flex;
+
+    .nav-btn {
+        transition: all 0.3s ease-in-out;
+        width: 10%;
+        background-color: var(--sidebar-bg);
+        padding: 10px 15px;
+        color: #a6a6a6;
+    }
+
+    .show {
+        background-color: var(--bg-content-color);
+        
+        h2 {
+            color: var(--text-color);
+        }
+    }
+}
+
+.action_nav_body {
+    background-color: var(--bg-content-color);
+}

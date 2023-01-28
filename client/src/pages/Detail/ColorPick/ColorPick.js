@@ -16,7 +16,7 @@ function ColorPick({ data = [] }) {
                 </label>
             ))}
         </div>
-    );
+    ); 
 }
 
 export default ColorPick;
