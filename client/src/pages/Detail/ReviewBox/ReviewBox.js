@@ -20,7 +20,7 @@ function ReviewBox({ data = [] }) {
         <div className={cx("action_nav_body")}>
             {boxShow === 'rate' ?  (
                 <div className={cx("item_rating")}>
-                  Rate
+                  
                 </div>
             ) : (
                 <div className={cx("item_description")}>
