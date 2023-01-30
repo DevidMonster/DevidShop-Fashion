@@ -1,0 +1,37 @@
+.wrapper {
+    .action {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 10px;
+        
+        .des_btn {
+            font-size: 1.5rem !important;
+        }
+
+        .number {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            height: 38px;
+            padding: 0 10px;
+            align-items: center;
+            background: var(--bg-content-color);
+            border-radius: 20px;
+
+            .quantity_input {
+                background: transparent;
+                display: inline-block;
+                color: var(--text-color);
+                width: 30px;
+            }
+        }
+
+        .inc_btn {
+            font-size: 1.5rem !important;
+        }
+    }
+
+    p {
+        color: var(--text-color);
+    }
+}

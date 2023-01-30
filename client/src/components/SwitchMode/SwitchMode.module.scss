@@ -1,0 +1,50 @@
+.switch-mode {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+.switch-checkbox {
+   opacity: 0;
+   width: 0;
+   height: 0;
+   &:checked + .change_state_mode{
+        background-color: #2196f3
+   }
+   &:checked + .change_state_mode:before {
+        content: "🌑";
+        text-align: center;
+        line-height: 26px;
+        font-size: 2rem;
+        transform: translateX(26px);
+   }
+}
+
+.change_state_mode {
+   position: absolute;
+   cursor: pointer;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: #ccc;  
+   transition: background-color 0.5s ease-in-out;
+
+   &::before {
+        content: "🌞";
+        text-align: center;
+        line-height: 26px;
+        font-size: 2rem;
+        position: absolute;
+        height: 26px;
+        width: 26px;
+        border-radius: 50%;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: 0.5s ease-in-out;
+   }
+}

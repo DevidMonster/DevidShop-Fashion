@@ -1,0 +1,14 @@
+.wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    .banner_box {
+        border-radius: 20px;
+        -webkit-border-radius: 20px;
+        height: 270px;
+        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+}
