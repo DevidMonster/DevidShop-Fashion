@@ -1,6 +1,6 @@
 import styles from './SizePick.module.scss';
 import classNames from 'classnames/bind';
-import { useState } from 'react';
+import { useState, memo } from 'react';
 
 const cx = classNames.bind(styles)
 
@@ -19,4 +19,4 @@ function SizePick({ data = [] }) {
     );
 }
 
-export default SizePick;
+export default memo(SizePick);

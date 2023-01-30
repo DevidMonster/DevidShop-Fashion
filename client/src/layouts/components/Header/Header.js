@@ -20,7 +20,7 @@ import { screenModeSelector, toggleSideBarSelector } from "../../../redux/select
 
 const cx = classNames.bind(styles)
 
-function Header() {
+function Header({ isSideBar = true }) {
     const user = true  //localStorage.getItem("user") || false
     let mode = useSelector(screenModeSelector) || false
     if(localStorage.getItem('mode'))  mode = localStorage.getItem('mode') === "true" ? true : false;
@@ -41,9 +41,11 @@ function Header() {
 
 
     return <header className={cx('header_wrapper')}>
-        <div className={cx("menu_toggle")} onClick={handleToggleMenu}>
-            <AiOutlineMenu/>
-        </div>
+        {isSideBar && (            
+            <div className={cx("menu_toggle")} onClick={handleToggleMenu}>
+                <AiOutlineMenu/>
+            </div>
+        )}
         <div className={cx('logo_box')} >
             <Button text normal className={cx("logo_navigate")} to={"/"}>
                 <img src={mode ? images.logo_white : images.logo} alt="Logo" />

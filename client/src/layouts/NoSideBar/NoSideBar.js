@@ -9,7 +9,7 @@ const cx = classNames.bind(styles)
 function NoSideBar({ children }) {
     return ( 
         <div className={cx('wrapper')}>
-            <Header/>
+            <Header isSideBar={false}/>
                 {children}
             <Footer/>
         </div>    

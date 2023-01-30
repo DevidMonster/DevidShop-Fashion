@@ -5,6 +5,7 @@ import styles from './Button.module.scss';
 const cx = classNames.bind(styles);
 
 function Button({
+    type,
     to,
     href,
     children,
@@ -63,7 +64,7 @@ function Button({
     });
 
     return (
-        <Comp className={classes} {...props}>
+        <Comp className={classes} type={type} {...props}>
             {leftIcon && <span className={cx('left-icon')}>{leftIcon}</span>}
             {icon ? (<span className={cx('icon')}>{icon}</span>) : (<span className={cx("title")}>{children}</span>)}
             {rightIcon && <span className={cx('right-icon')}>{rightIcon}</span>}

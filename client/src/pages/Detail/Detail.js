@@ -80,7 +80,7 @@ function Detail() {
                     </div>
                 </div>
                 <div className={cx('item_review_box')}>
-                    <ReviewBox/>
+                    <ReviewBox item={data}/>
                 </div>
             </div>
             <div className={cx('bottom')}>

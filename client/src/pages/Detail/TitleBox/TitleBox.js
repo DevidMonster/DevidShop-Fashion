@@ -1,5 +1,6 @@
 import styles from './TitleBox.module.scss';
 import classNames from 'classnames/bind';
+import { memo } from 'react';
 
 const cx = classNames.bind(styles)
 
@@ -14,4 +15,4 @@ function TitleBox({ title, children }) {
     );
 }
 
-export default TitleBox;
+export default memo(TitleBox);

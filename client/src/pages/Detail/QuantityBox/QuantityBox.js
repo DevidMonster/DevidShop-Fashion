@@ -1,6 +1,6 @@
 import styles from './QuantityBox.module.scss';
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, memo } from 'react';
 
 import Button from '../../../components/Button';
 import { RiArrowUpSLine, RiArrowDownSLine } from '../../../asset/icons';
@@ -49,4 +49,4 @@ function QuantityBox({ quantity }) {
     );
 }
 
-export default QuantityBox;
+export default memo(QuantityBox);
