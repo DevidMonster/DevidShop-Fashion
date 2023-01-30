@@ -60,7 +60,12 @@ function Detail() {
                             <h2 className={cx('item_name')}>{data.name}</h2>
                         </TitleBox>
                         <TitleBox title={"Price "}>
-                            <p className={cx('item_price')}>{data.price} VNĐ</p>
+                            {data.sale_off === 0 ? (
+                                <p className={cx('item_price')}>{data.price} VNĐ</p>
+                            ) : (
+                                <p className={cx('item_price')}><span className={cx('old_price')}>({data.price})</span> {data.price - (data.price * (data.sale_off / 100))} VNĐ</p>
+                            )}
+                            
                         </TitleBox>
                         <TitleBox title={"Description "}>
                             <p className={cx('item_description')}>{data.description}</p>
