@@ -40,7 +40,7 @@ function QuantityBox({ quantity }) {
             <div className={cx('action')}>
                 <Button text icon={<RiArrowDownSLine/>} onClick={handleDecrease} className={cx('des_btn')}/>
                 <div className={cx('number')}>
-                    <input type={"number"} value={number} defaultValue={0} onChange={e => changeQuantity(e)} className={cx('quantity_input')}/>
+                    <input type={"number"} value={number} onChange={e => changeQuantity(e)} className={cx('quantity_input')}/>
                 </div>
                 <Button text icon={<RiArrowUpSLine/>} onClick={handleIncrease} className={cx('inc_btn')}/>
             </div>

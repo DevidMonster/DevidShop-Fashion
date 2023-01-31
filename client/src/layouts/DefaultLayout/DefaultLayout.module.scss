@@ -33,4 +33,14 @@
     .background-sideBar {
         display: block;
     }
+
+    .main_container {
+        margin-left: 110px;
+    }
+}
+
+@media (max-width: 660px) {
+    .main_container {
+        margin-left: 0;
+    }
 }

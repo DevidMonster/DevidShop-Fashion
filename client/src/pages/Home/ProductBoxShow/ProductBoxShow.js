@@ -1,7 +1,6 @@
 import styles from './ProductBoxShow.module.scss';
 import classNames from 'classnames/bind';
 import ProductSession from './ProductSession';
-import ResizeDetector from 'react-resize-detector';
 
 import * as request from '../../../utils/httpRequest';
 import { useEffect, useState } from 'react';
