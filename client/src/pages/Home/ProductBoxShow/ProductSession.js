@@ -6,21 +6,21 @@ const cx = classNames.bind(styles)
 
 function ProductSession({ title ,data = [] }) {
 
-    const settings = {
-        infinite: true,
-        speed: 500,
-        slidesToShow: data.length <= 5? data.length : 5,
-        slidesToScroll: 1,
-        autoplay: true,
-        useURLhash: true,
-        autoplaySpeed: 6000,
-        swipeToSlide: true,
-        focusOnSelect: true,
-        asNavFor: nav1,
-        prevArrow: <PrevButton/>,
-        nextArrow: <NextButton/>,
-        dots: true
-    };
+    //const settings = {
+        //infinite: true,
+        //speed: 500,
+        //slidesToShow: data.length <= 5? data.length : 5,
+        //slidesToScroll: 1,
+        //autoplay: true,
+        //useURLhash: true,
+        //autoplaySpeed: 6000,
+        //swipeToSlide: true,
+        //focusOnSelect: true,
+        //asNavFor: nav1,
+        //prevArrow: <PrevButton/>,
+        //nextArrow: <NextButton/>,
+        //dots: true
+    //};
 
     return (  
         <div className={cx('hp_wrapper')}>
