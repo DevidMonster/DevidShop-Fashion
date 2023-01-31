@@ -1,5 +1,5 @@
 
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import styles from "./App.module.scss"
 import classNames from "classnames/bind";
 import DefaultLayout from "./layouts/DefaultLayout";
@@ -8,15 +8,33 @@ import { BrowserRouter as Router,Routes, Route } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 
 //import { menuToggle } from "./redux/actions";
-import ResizeDetector from 'react-resize-detector';
 // import { saveURL } from './redux/actions';
- import CheckURL from './components/CheckURL';
+import ResizeDetector from 'react-resize-detector';
+import CheckURL from './components/CheckURL';
 import reducers from './redux/reducer';
 import { screenModeSelector, toggleSideBarSelector } from './redux/selectors';
+import Button from './components/Button';
+import { RiArrowUpSLine } from './asset/icons';
 
 const cx = classNames.bind(styles)
 
 function App() {
+  const [scrollShow, setScrollShow] = useState(false)
+
+  window.onscroll = () => scrollFunction();
+  function scrollFunction() {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+      setScrollShow(true)
+    } else {
+      setScrollShow(false)      
+    }
+  }
+
+  // When the user clicks on the button, scroll to the top of the document
+  const topFunction = () => {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
   
   let mode = useSelector(screenModeSelector)
   let toggle = useSelector(toggleSideBarSelector) || false
@@ -69,6 +87,7 @@ function App() {
 
             })}
           </Routes>
+          <Button className={cx('scroll_top', {scrollShow: scrollShow})}  icon={<RiArrowUpSLine/>} onClick={topFunction}/>
       </div>
     </Router>
   );

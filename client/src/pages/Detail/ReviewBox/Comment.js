@@ -8,8 +8,7 @@ function Comment() {
     return (
         <div className={cx('cmt_wrapper')}>
             <div className={cx("product-avg-ratting")}>
-                <h4>4.5 <span>(overall)</span></h4>
-                <span>Based on 9 Comments</span>
+                <span>9 Comments</span>
             </div>
             <div className={cx("product-comment-box")}>
                 <div className={cx("product-comment-view")}>
@@ -32,11 +31,11 @@ function Comment() {
                 <form action="#" className={cx("comment-form-action")}>
                     <div className={cx("input-name-box")}>
                         <label htmlFor="name">Name:</label>
-                        <input type="text" name="name" value="" placeholder="Type your name" />
+                        <input type="text" name="name" placeholder="Type your name" />
                     </div>
                     <div className={cx("input-email-box")}>
                         <label htmlFor="email">Email:</label>
-                        <input type="email" name="email" value="" placeholder="Type your email address" />
+                        <input type="email" name="email" placeholder="Type your email address" />
                     </div>
                     <div className={cx("input-comment-box")}>
                         <label htmlFor="comment">Your comment:</label>

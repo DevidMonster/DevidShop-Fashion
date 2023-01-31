@@ -1,9 +1,11 @@
 import styles from './ProductBoxShow.module.scss';
 import classNames from 'classnames/bind';
-import HotProduct from './HotProduct';
+import ProductSession from './ProductSession';
+import ResizeDetector from 'react-resize-detector';
 
 import * as request from '../../../utils/httpRequest';
 import { useEffect, useState } from 'react';
+
 
 const cx = classNames.bind(styles)
 
@@ -20,7 +22,8 @@ function ProductBoxShow() {
 
     return (  
         <div className={cx('wrapper')}>
-            <HotProduct data={data}/>
+            <ProductSession data={data} title={'Hot Product'}/>
+            <ProductSession data={data} title={'New Product'}/>
         </div>
     );
 }

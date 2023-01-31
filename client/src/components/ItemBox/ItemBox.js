@@ -25,7 +25,7 @@ function ItemBox({ item }) {
                     </Tippy>
                 </div>
             </div>
-            <h1 className={cx('name_pd')}><Link to={`/detail?id=${item._id}`}>{item.name}</Link></h1>
+            <h2 className={cx('name_pd')}><Link to={`/detail?id=${item._id}`}>{item.name}</Link></h2>
             {item.sale_off === 0 ? (
                 <p className={cx('item_price')}>{item.price} VNĐ</p>
             ) : (

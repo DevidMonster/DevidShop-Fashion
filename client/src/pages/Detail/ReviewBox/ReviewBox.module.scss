@@ -3,7 +3,7 @@
 
     .nav-btn {
         transition: all 0.3s ease-in-out;
-        width: 10%;
+        width: 120px;
         background-color: var(--sidebar-bg);
         padding: 10px 15px;
         color: #a6a6a6;
@@ -27,21 +27,6 @@
 
 .product-avg-ratting {
     margin-bottom: 20px;
-
-    h4 {
-        color: var(--text-color);
-        font-size: 1.8rem;
-        font-weight: 700;
-        line-height: 14px;
-        margin: 0 0 7px;
-
-        span {
-            color: var(--text-color);
-            font-size: 1.2rem;
-            font-weight: 400;
-            line-height: 10px;
-        }
-    }
 
     &>span {
         color: var(--text-color);
@@ -147,7 +132,7 @@
     & textarea {
         background: #fff no-repeat;
         border: 1px solid #eee;
-        color: var(--text-item-hover);
+        color: #32323d;
         font-size: 1.2rem;
         font-weight: 500;
         height: 44px;
@@ -190,8 +175,12 @@
 }
 
 
-
-
-
-
-
+@media (max-width: 660px) {
+    .comment-form-action { 
+        & .input-name-box,
+        & .input-email-box {
+            flex: unset;
+            width: 100%;
+        }
+    }
+}

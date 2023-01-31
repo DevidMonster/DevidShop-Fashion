@@ -2,7 +2,19 @@
     margin: 20px 0;
 }
 
-.title {
-    color: var(--text-color);
-    margin-bottom: 20px;
+
+.hp_wrapper {
+    margin-bottom: 30px;
+
+    .title {
+        color: var(--text-color);
+        margin-bottom: 20px;
+    }
+
+    .show {
+        display: flex;
+        gap: 60px;  
+        align-items: center;
+
+    }
 }

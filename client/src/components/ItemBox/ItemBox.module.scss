@@ -37,7 +37,7 @@
         }
 
         .fix_color {
-            color: var(--primary-bg);
+            color: #fff !important;
             font-size: 1.7rem;
         }
 
@@ -48,8 +48,9 @@
     }
 
     .name_pd {
-
+        margin: 5px 0;
         a {
+            font-size: 1.7rem;
             text-decoration: none;
             color: var(--text-color);
             text-overflow: ellipsis;

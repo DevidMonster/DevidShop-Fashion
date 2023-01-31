@@ -10,7 +10,6 @@ const cx = classNames.bind(styles)
 function SwitchMode() {
     let mode = useSelector(screenModeSelector) || false
     if(localStorage.getItem('mode'))  mode = localStorage.getItem('mode') === "true" ? true : false;
-    console.log(mode)
     const dispatch = useDispatch()
     
 

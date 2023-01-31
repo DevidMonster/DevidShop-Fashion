@@ -43,7 +43,10 @@ function ImageSilde({ data = [] }) {
         autoplaySpeed: 6000,
         swipeToSlide: true,
         focusOnSelect: true,
-        asNavFor: nav1
+        asNavFor: nav1,
+        prevArrow: <PrevButton/>,
+        nextArrow: <NextButton/>,
+        dots: true
     };
 
     return (
