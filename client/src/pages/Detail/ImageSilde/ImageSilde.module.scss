@@ -21,7 +21,8 @@
 
     .slide_bot {
         height: 95.62px;
-
+        overflow: hidden;
+        
         & * {
             height: 100%;
         }

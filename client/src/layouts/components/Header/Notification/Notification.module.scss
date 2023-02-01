@@ -17,3 +17,17 @@
          right: -5px;
     }
 }
+
+.alert-list {
+    width: 200px;
+    
+    .no_result {
+        flex: 1;
+        display: flex;
+        font-size: 1.5rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: var(--text-color);
+    }
+}
