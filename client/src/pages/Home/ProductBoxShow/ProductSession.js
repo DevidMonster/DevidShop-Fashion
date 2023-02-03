@@ -42,13 +42,13 @@ function ProductSession({ title ,data = [] }) {
             {type === 'flex'? 
                 (
                     <div className={cx('show')}>
-                        {data.map((item, index) => <ItemBox key={index} item={item}/>)}
+                        {data.length === 0 ? (<ItemBox pending={true}/>) : (data.map((item, index) => <ItemBox key={index} item={item}/>))}
                     </div>
                 )
                     : 
                 (
                     <Slider {...settings}>
-                        {data.map((item, index) => <ItemBox key={index} item={item}/>)}
+                        {data.length === 0 ? (<ItemBox pending={true}/>) : (data.map((item, index) => <ItemBox key={index} item={item}/>))}
                     </Slider>
                 )
             }

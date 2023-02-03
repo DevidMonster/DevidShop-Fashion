@@ -13,6 +13,7 @@ const publicRoutes = [
     { path: config.routes.product, component: Product },
     { path: config.routes.detail, component: Detail, layout: NoSideBar },
     { path: config.routes.about, component: Product },
+    { path: config.routes.sale, component: Product },
     { path: config.routes.blog, component: Product },
     { path: config.routes.contact, component: Product },
 ];

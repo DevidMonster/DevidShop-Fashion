@@ -10,29 +10,37 @@ import { Fragment } from 'react';
 
 const cx = classNames.bind(styles)
 
-function ItemBox({ item }) {
-    return (  
-        <div className={cx('wrapper')}>
-            <div className={cx('image_item')}>
-                <img src={item.images[0]} alt={item.name}/>
-                <div className={cx('bg_hover')}>
-                    <Tippy       
-                        placement='bottom'        
-                        delay={(0, 50)}
-                        content={"View Detail"}
-                    >
-                        <div><Button icon={<BsPlusSquare/>} to={`/detail?id=${item._id}`} className={cx('fix_color')}/></div>
-                    </Tippy>
-                </div>
+function ItemBox({ pending = false, item }) {
+    if(pending) {
+        return (
+            <div className={cx('wrapper_pending')}>
+                
             </div>
-            <h2 className={cx('name_pd')}><Link to={`/detail?id=${item._id}`}>{item.name}</Link></h2>
-            {item.sale_off === 0 ? (
-                <p className={cx('item_price')}>{item.price} VNĐ</p>
-            ) : (
-                <p className={cx('item_price')}><span className={cx('old_price')}>({item.price})</span> {item.price - (item.price * (item.sale_off / 100))} VNĐ</p>
-            )}
-        </div>
-    );
+        )
+    } else {
+        return (  
+            <div className={cx('wrapper')}>
+                <div className={cx('image_item')}>
+                    <img src={item.images[0]} alt={item.name}/>
+                    <div className={cx('bg_hover')}>
+                        <Tippy       
+                            placement='bottom'        
+                            delay={(0, 50)}
+                            content={"View Detail"}
+                        >
+                            <div><Button icon={<BsPlusSquare/>} to={`/detail?id=${item._id}`} className={cx('fix_color')}/></div>
+                        </Tippy>
+                    </div>
+                </div>
+                <h2 className={cx('name_pd')}><Link to={`/detail?id=${item._id}`}>{item.name}</Link></h2>
+                {item.sale_off === 0 ? (
+                    <p className={cx('item_price')}>{item.price} VNĐ</p>
+                ) : (
+                    <p className={cx('item_price')}><span className={cx('old_price')}>({item.price})</span> {item.price - (item.price * (item.sale_off / 100))} VNĐ</p>
+                )}
+            </div>
+        );
+    }
 }
 
 export default ItemBox;

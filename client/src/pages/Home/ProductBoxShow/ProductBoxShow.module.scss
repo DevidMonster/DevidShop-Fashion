@@ -1,5 +1,11 @@
 .wrapper {
     margin: 20px 0;
+
+    .post {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 10px;
+    }
 }
 
 
