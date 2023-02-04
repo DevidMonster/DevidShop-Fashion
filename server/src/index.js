@@ -74,11 +74,13 @@ const generalRoutes = require('./routes/general');
 const categoryRoutes = require('./routes/category');
 const itemRoutes = require('./routes/Item');
 const bannerRoutes = require('./routes/banner');
+const commentRoutes = require('./routes/comment');
 
 app.use('/general', generalRoutes);
 app.use('/category', categoryRoutes);
 app.use('/item', itemRoutes);
 app.use('/banner', bannerRoutes);
+app.use('/comment', commentRoutes);
 
 //connect database
 mongoose.connect(process.env.MONGO_URL , {

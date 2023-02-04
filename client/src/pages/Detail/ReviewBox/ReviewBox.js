@@ -7,6 +7,7 @@ import Comment from "./Comment";
 const cx = classNames.bind(styles);
 
 function ReviewBox({ item }) {
+    console.log(item._id)
     const [boxShow, setBoxShow] = useState("rate");
 
     return (
@@ -22,7 +23,7 @@ function ReviewBox({ item }) {
             <div className={cx("action_nav_body")}>
                 {boxShow === 'rate' ? (
                     <div className={cx("item_rating")}>
-                        <Comment/>
+                        <Comment id={item._id}/>
                     </div>
                 ) : (
                     <div className={cx("item_description")}>

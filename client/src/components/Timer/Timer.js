@@ -40,7 +40,7 @@ function Timer() {
         return () => clearInterval(currentTimeSet);
     });
     return ( 
-        <div className={cx('current-time')}><span className={cx('time')}>{time}</span> <span className={cx('day-state')}>{night ? '🌑' : '🌞'}</span></div>
+        <div className={cx('current-time')}><span className={cx('time')}>{time}</span> <span className={cx('day-state')}>{night ? '🌑' : '☀️'}</span></div>
     );
 }
 

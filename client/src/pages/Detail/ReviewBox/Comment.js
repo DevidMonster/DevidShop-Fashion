@@ -1,48 +1,83 @@
 import styles from "./ReviewBox.module.scss";
 import classNames from "classnames/bind";
+
 import Button from "../../../components/Button";
+import ShowComment from "../../../components/ShowComment";
+
+import { useEffect, useState } from "react";
+import * as request from '../../../utils/httpRequest';
 
 const cx = classNames.bind(styles);
 
-function Comment() {
+function Comment({ id }) {
+    const [nameValue, setNameValue] = useState("")
+    const [emailValue, setEmailValue] = useState("")
+    const [contentValue, setContentValue] = useState("")
+    const [err, setErr] = useState({ errName: false, errEmail: false, errContent: false })
+    const [reload, setReload] = useState(false)
+
+    const handlePostData = () => {
+        console.log(contentValue)
+        if(nameValue !== "" && emailValue !== "" && contentValue !== "") {
+           
+            const object = {
+                product_id: id,
+                name: nameValue,
+                email: emailValue,
+                content: contentValue
+            }
+            const postData = async () => {
+                const result = await request.post("/comment/create", {
+                    ...object
+                })
+                console.log(result)
+                setReload(prev => !prev)
+                setErr({ errName: false, errEmail: false, errContent: false })
+                setNameValue("")
+                setEmailValue("")
+                setContentValue("")
+            }
+            postData()
+        } else {
+            console.log("run else")
+            if(nameValue === "") {
+                setErr(prev => ({...prev, errName: true}))
+            } else {
+                setErr(prev => ({...prev, errName: false}))
+            }
+            if(emailValue === "") {
+                setErr(prev => ({...prev, errEmail: true}))
+            }else {
+                setErr(prev => ({...prev, errEmail: false}))
+            }
+            if(contentValue === "") {
+                setErr(prev => ({...prev, errContent: true}))
+            }else {
+                setErr(prev => ({...prev, errContent: false}))
+            }
+        }
+    }
+    
     return (
         <div className={cx('cmt_wrapper')}>
-            <div className={cx("product-avg-ratting")}>
-                <span>9 Comments</span>
-            </div>
-            <div className={cx("product-comment-box")}>
-                <div className={cx("product-comment-view")}>
-                    <div className={cx("product-comment-view-info")}>
-                        <div className={cx("product-comment-author")}>
-                            <span>Nguyễn Quang Đăng</span>
-                        </div>
-                        <div className={cx("product-comment-time")}>
-                            <span>12:24</span>
-                            <span>5 March 2016</span>
-                        </div>
-                    </div>
-                    <p className={cx("product-comment-view-title")}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nost rud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nost.
-                    </p>
-                </div>
-            </div>
+            <ShowComment reload={reload} id={id}/>
             <div className={cx("comment-form-wrap-box")}>
                 <h3>ADD YOUR COMMENTS</h3>
-                <form action="#" className={cx("comment-form-action")}>
-                    <div className={cx("input-name-box")}>
+                <form className={cx("comment-form-action")}>
+                    <div className={cx("input-name-box", { input_box: err.errName })}>
                         <label htmlFor="name">Name:</label>
-                        <input type="text" name="name" placeholder="Type your name" />
+                        <input className={cx({error: err.errName})} type="text" value={nameValue} placeholder="Type your name" onChange={(e) => setNameValue(e.target.value)}/>
                     </div>
-                    <div className={cx("input-email-box")}>
+                    <div className={cx("input-email-box",{input_box: err.errEmail})}>
                         <label htmlFor="email">Email:</label>
-                        <input type="email" name="email" placeholder="Type your email address" />
+                        <input className={cx({error: err.errEmail})} type="email" value={emailValue} placeholder="Type your email address" onChange={(e) => setEmailValue(e.target.value)}/>
                     </div>
-                    <div className={cx("input-comment-box")}>
+                    <div className={cx("input-comment-box", {input_box: err.errContent})}>
                         <label htmlFor="comment">Your comment:</label>
-                        <textarea name="" id="" cols="30" rows="10" placeholder="White a comment"></textarea>
+                        <textarea className={cx({error: err.errContent})}  cols="30" rows="10" placeholder="White a comment" onChange={(e) => setContentValue(e.target.value)} value={contentValue}></textarea>
                     </div>
                     <div className={cx("input-btnsubmit-box")}>
-                        <Button type={"submit"}>Add Comment</Button>
+                        <Button type={"button"} onClick={handlePostData}>Add Comment</Button>
                     </div>
                 </form>
             </div>

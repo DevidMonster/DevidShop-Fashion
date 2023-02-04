@@ -25,83 +25,6 @@
 
 /* COMMENT BOX */
 
-.product-avg-ratting {
-    margin-bottom: 20px;
-
-    &>span {
-        color: var(--text-color);
-        display: block;
-        font-size: 1.4rem;
-        font-weight: 300;
-        line-height: 10px;
-    }
-}
-
-.product-comment-box {
-    margin-bottom: 40px;
-
-    &::-webkit-scrollbar {
-        width: 0.6rem;
-    /* chiều rộng rộng 6px */
-    }
-    &::-webkit-scrollbar-thumb {
-        background-color: #ccc;
-        /*màunềncủathanhcuộn*/
-        border-radius: 1rem;
-        -webkit-border-radius: 1rem;
-        -moz-border-radius: 1rem;
-        -ms-border-radius: 1rem;
-        -o-border-radius: 1rem;
-    }
-
-    &::-webkit-scrollbar-track {
-        background-color: #fff;
-        /* màu nền của thanh cuộn */
-        border-radius: 1rem;
-        -webkit-border-radius: 1rem;
-        -moz-border-radius: 1rem;
-        -ms-border-radius: 1rem;
-        -o-border-radius: 1rem;
-    }
-}
-
-.product-comment-view {
-    padding-right: 5px;
-    margin-bottom: 30px;
-}
-
-.product-comment-view-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.product-comment-author {
-    span {
-        color: var(--text-color);
-        font-weight: 700;
-        font-size: 1.3rem;
-    }
-}
-
-.product-comment-time {
-    display: flex;
-
-    span {
-        color: var(--text-color);
-        display: block;
-        font-size: 1.2rem;
-        font-weight: 300;
-        line-height: 13px;
-        margin-left: 15px;
-    }
-}
-
-.product-comment-view-title {
-    color: var(--text-color);
-    font-size: 1.3rem;
-}
-
 .comment-form-wrap-box {
     h3 {
         font-size: 1.4rem;
@@ -116,7 +39,28 @@
 .comment-form-action {
     display: flex;
     flex-wrap: wrap;
+    
     gap: 15px;
+
+    .input_box {
+        position: relative;
+
+        &::before {
+            display: block;
+            content: "* required";
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+        }
+    }
+        
+    .error {
+        border: 1px solid rgba(255, 0, 0, 0.87);
+
+
+
+    }
 
     label {
         color: var(--text-color);
