@@ -1,7 +1,7 @@
 import styles from './Detail.module.scss';
 import classNames from 'classnames/bind';
 import Button from '../../components/Button';
-import { AiOutlineLeft } from '../../asset/icons';
+import { AiOutlineLeft, AiOutlineRight } from '../../asset/icons';
 
 import { useSelector } from 'react-redux';
 import { prevUrlSelector } from '../../redux/selectors';
@@ -16,6 +16,7 @@ import SizePick from './SizePick';
 import ColorPick from './ColorPick';
 import QuantityBox from './QuantityBox';
 import ReviewBox from './ReviewBox';
+import { useScroll } from '../../hooks';
 
 const cx = classNames.bind(styles)
 
@@ -26,10 +27,7 @@ function Detail() {
     
     const [id] = useSearchParams()
     console.log(id.get('id'))
-    useEffect(() => {
-        document.body.scrollTop = 0; // For Safari
-        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    }, [])
+    useEffect(useScroll, [])
     
     useEffect(() => {
         const fetchAPI = async () => {
@@ -54,11 +52,14 @@ function Detail() {
                 <Button leftIcon={<AiOutlineLeft/>} text onClick={handleGoBack}>
                     Go back
                 </Button>
+                <span className={cx('nav_prev')}>
+                    <p>{prevUrl === "/" ? "Home" : prevUrl.slice(1, prevUrl.length)} <AiOutlineRight/> Detai Page</p>
+                </span>
             </div>
             <div className={cx('main')}>
                 <div className={cx('item_detail_box')}>
                     <div className={cx('item-picture')}>
-                        <ImageSilde data={data.images}/>
+                        <ImageSilde data={data.images} count={data.quantity}/>
                     </div>
                     <div className={cx('item-description')}>
                         <TitleBox title={"Name "}>
@@ -86,7 +87,7 @@ function Detail() {
                         <TitleBox title={"Quantity "}>
                             <QuantityBox quantity={data.quantity}/>
                         </TitleBox>
-                        <Button large>Add to cart</Button>
+                        <Button large disibled={data.quantity === 0}>Add to cart</Button>
                     </div>
                 </div>
                 <div className={cx('item_review_box')}>

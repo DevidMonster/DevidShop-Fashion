@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import Button from '../Button';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
-import { Fragment } from 'react';
 
 const cx = classNames.bind(styles)
 
@@ -22,14 +21,18 @@ function ItemBox({ pending = false, item }) {
             <div className={cx('wrapper')}>
                 <div className={cx('image_item')}>
                     <img src={item.images[0]} alt={item.name}/>
-                    <div className={cx('bg_hover')}>
-                        <Tippy       
-                            placement='bottom'        
-                            delay={(0, 50)}
-                            content={"View Detail"}
-                        >
-                            <div><Button icon={<BsPlusSquare/>} to={`/detail?id=${item._id}`} className={cx('fix_color')}/></div>
-                        </Tippy>
+                    <div className={cx('bg_hover', { disabled: item.quantity === 0 })}>
+                        {item.quantity > 0 ? (
+                            <Tippy       
+                                placement='bottom'        
+                                delay={(0, 50)}
+                                content={"View Detail"}
+                            >
+                                <div><Button icon={<BsPlusSquare/>} to={`/detail?id=${item._id}`} className={cx('fix_color')}/></div>
+                            </Tippy>
+                        ) : (
+                            <p>Đã hết hàng</p>
+                        )}
                     </div>
                 </div>
                 <h2 className={cx('name_pd')}><Link to={`/detail?id=${item._id}`}>{item.name}</Link></h2>

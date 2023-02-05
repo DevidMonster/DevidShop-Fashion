@@ -24,6 +24,16 @@ const getItem = async (req, res) => {
     }
 }
 
+const getItemByCategory = async (req, res) => {
+    try {
+        const { id } = req.query
+        const item = await Product.find({cate_id: id})
+        console.log(item)
+        res.status(200).json(item)
+    } catch(err) {
+        res.status(404).json({message: err.message})
+    }
+}
 
-module.exports = { getItem }
+module.exports = { getItem, getItemByCategory }
 

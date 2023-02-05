@@ -1,0 +1,44 @@
+.wrapper {
+
+    ul {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        color: var(--text-color);
+        gap: 10px;
+        font-size: 1.5rem;
+        justify-content: center;
+
+        li {
+            width: 35px;
+            height: 35px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &.selected {
+                background-color: var(--bg-content-color);
+            }
+
+            &.disabled {
+                color: Grey;
+            }
+
+            &:hover {
+                background-color: var(--bg-content-color);
+            }
+        }
+
+        
+    }
+
+}
+
+.s_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}

@@ -51,6 +51,10 @@ const reducers = createSlice({
         prevUrl: "/",
         toggle_mode: true,
         data: [],
+        cateSelected: {
+            _id: "lord",
+            name: "All"
+        },
     },
     reducers: {
         switchMode: (state, action) => {
@@ -75,6 +79,9 @@ const reducers = createSlice({
         },
         menuToggle: (state, action) => {
             state.toggle_mode = !action.payload
+        },
+        changeCate: (state, action) => {
+            state.cateSelected = action.payload
         }
     }
 })

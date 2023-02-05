@@ -66,9 +66,30 @@
         }
     }
 
+    .disabled {
+        opacity: unset !important;
+        visibility: unset !important;
+        width: 100%;
+        height: 100%;
+    
+        p {
+            background-color: var(--primary-bg);
+            padding: 15px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--text-color);
+            font-weight: 500;
+            color: var(--text-color);
+            font-size: 1.5rem;
+        }
+    }
+
     .name_pd {
         margin: 5px 0;
+
         a {
+            display: block;
+            max-width: 100%;
+            white-space:nowrap;
             font-size: 1.7rem;
             text-decoration: none;
             color: var(--text-color);

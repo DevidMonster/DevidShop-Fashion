@@ -12,7 +12,7 @@ import "slick-carousel/slick/slick-theme.scss";
 
 const cx = classNames.bind(styles)
 
-function ImageSilde({ data = [] }) {
+function ImageSilde({ data = [], count }) {
 
     const [nav1, setNav1] = useState();
     const [nav2, setNav2] = useState();
@@ -55,7 +55,7 @@ function ImageSilde({ data = [] }) {
                 <Slider {...settings} ref={(slider1) => setNav1(slider1)}>
                     {data.map((pic, index) => (
                         <div className={cx('main_image')} key={index}>
-                            <img src={pic}/>
+                            <img src={pic} alt={index}/>
                         </div>
                     ))}
                 </Slider>
@@ -69,6 +69,11 @@ function ImageSilde({ data = [] }) {
                     ))}
                 </Slider>
            </div>   
+           {count === 0 && (
+                <div className={cx({ disabled: count === 0 })}>
+                    <p>Đã hết hàng</p>
+                </div>
+            )}
         </div>
     );
 }
