@@ -11,6 +11,12 @@
     }
 }
 
+.pending {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 200px 0;
+}
+
 .item_detail_box {
     display: flex;
     justify-content: space-between;

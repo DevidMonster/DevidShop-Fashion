@@ -15,3 +15,44 @@
         }
     }
 }
+
+.loader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .dot-1 {
+        animation: anim 1s linear 0s infinite;
+    }
+      
+    .dot-2 {
+        animation: anim 1s linear 0.25s infinite;
+    }
+    
+    .dot-3 {
+        animation: anim 1s linear 0.50s infinite;
+    }
+
+    span {
+        width: 5px;
+        height: 5px;
+        display: block;
+        background: #fff;
+        border-radius: 50%;
+        margin: 0 5px;
+    }
+}
+
+@keyframes anim {
+    0% {
+      transform: translateY(0);
+    }
+  
+    50% {
+        transform: translateY(-80%);
+    }
+  
+    100% {
+        transform: translateY(0);
+    }
+}

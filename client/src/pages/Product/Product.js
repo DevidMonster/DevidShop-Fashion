@@ -7,6 +7,7 @@ import { setCateGorySelected } from '../../redux/selectors';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import CategoryHeader from './CategoryHeader';
+import Loading from '../../components/Loading';
 
 const cx = classNames.bind(styles)
 
@@ -14,8 +15,10 @@ function Product() {
     const cate = useSelector(setCateGorySelected)
 
     const [data, setData] = useState([])
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        setLoading(true)
         const fetchAPI= async () => {
             if(cate.name === "All") {
                 const dataResult = await request.get("/item")
@@ -28,9 +31,18 @@ function Product() {
                 })
                 setData(dataResult)
             }
+            setLoading(false)
         }
         fetchAPI()
     }, [cate])
+    console.log(loading)
+    if(loading) {
+        return (
+            <div className={cx('pending')}>
+                <Loading/>
+            </div>
+        )
+    }
 
     return (
         <div className={cx('wrapper')}>

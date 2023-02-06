@@ -15,11 +15,14 @@ function CategoryHeader() {
 
     console.log(cate)
     const [data, setData] = useState([])
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
+        setLoading(true)
         const fetchAPI = async () => {
             const dataResult = await request.get("/category")
             setData(dataResult)
+            setLoading(false)
         } 
         fetchAPI()
     }, [])
@@ -31,6 +34,14 @@ function CategoryHeader() {
     return (  
         <div className={cx('wrapper')}>
             <Button className={cx({ active: cate.name === "All" })} round onClick={() => handleSetCate({_id: "lord", name: "All"})}>All</Button>
+            {loading && 
+                <Button round>
+                    <p className={cx('loader')}>
+                        <span className={cx("dot-1")}></span>
+                        <span className={cx("dot-2")}></span>
+                        <span className={cx("dot-3")}></span>
+                    </p>
+                </Button>}
             {data.map(item => (
                 <Button className={cx({ active: cate.name === item.name })} key={item._id} round onClick={() => handleSetCate(item)}>{item.name}</Button>
             ))}
