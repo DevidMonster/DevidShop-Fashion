@@ -1,11 +1,11 @@
 import styles from './CategoryHeader.module.scss';
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import * as request from '../../../utils/httpRequest';
 import Button from '../../../components/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCateGorySelected } from '../../../redux/selectors';
-import reducers from '../../../redux/reducer';
+import reducers from '../../../redux/reducer'; 
 
 const cx = classNames.bind(styles)
 
@@ -13,7 +13,6 @@ function CategoryHeader() {
     const cate = useSelector(setCateGorySelected)
     const dispatch = useDispatch()
 
-    console.log(cate)
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
 
@@ -49,4 +48,4 @@ function CategoryHeader() {
     );
 }
 
-export default CategoryHeader;
+export default memo(CategoryHeader);

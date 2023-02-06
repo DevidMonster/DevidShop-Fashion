@@ -55,6 +55,11 @@ const reducers = createSlice({
             _id: "lord",
             name: "All"
         },
+        filter: {
+            id: 1,
+            value: "default",
+            label: "Default"
+        }
     },
     reducers: {
         switchMode: (state, action) => {
@@ -82,6 +87,9 @@ const reducers = createSlice({
         },
         changeCate: (state, action) => {
             state.cateSelected = action.payload
+        },
+        selectFilter: (state, action) => {
+            state.filter = action.payload
         }
     }
 })

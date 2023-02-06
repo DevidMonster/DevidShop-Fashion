@@ -10,6 +10,8 @@ export const searchHistorySelector = (state) => state.mainReducer.data
 
 export const setCateGorySelected = (state) => state.mainReducer.cateSelected
 
+export const setFilterSelected = (state) => state.mainReducer.filter
+
 // export const reducerSelector = createSelector(
 //     screenModeSelector,
 //     toggleSideBarSelector, 

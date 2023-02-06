@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import CategoryHeader from './CategoryHeader';
 import Loading from '../../components/Loading';
+import Filter from './Filter';
 
 const cx = classNames.bind(styles)
 
@@ -35,7 +36,7 @@ function Product() {
         }
         fetchAPI()
     }, [cate])
-    console.log(loading)
+    
     if(loading) {
         return (
             <div className={cx('pending')}>
@@ -49,6 +50,7 @@ function Product() {
             <div className={cx('header_scroll')}>
                 <CategoryHeader/>
             </div>
+            <Filter/>
             <PaginatedItems itemsPerPage={21} items={data}/>
         </div>
     );
