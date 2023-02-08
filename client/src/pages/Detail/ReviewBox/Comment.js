@@ -57,7 +57,7 @@ function Comment({ id }) {
             }
         }
     }
-    
+    console.log(reload)
     return (
         <div className={cx('cmt_wrapper')}>
             <ShowComment reload={reload} id={id}/>

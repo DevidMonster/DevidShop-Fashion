@@ -1,5 +1,5 @@
 
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import styles from "./App.module.scss"
 import classNames from "classnames/bind";
 import DefaultLayout from "./layouts/DefaultLayout";
@@ -21,7 +21,6 @@ const cx = classNames.bind(styles)
 function App() {
   const [scrollShow, setScrollShow] = useState(false)
 
-  window.onscroll = () => scrollFunction();
   function scrollFunction() {
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
       setScrollShow(true)
@@ -29,7 +28,11 @@ function App() {
       setScrollShow(false)      
     }
   }
-
+  
+  useEffect(() => {
+    window.onscroll = () => scrollFunction();
+  },[])
+  
   // When the user clicks on the button, scroll to the top of the document
   const topFunction = () => {
     document.body.scrollTop = 0; // For Safari

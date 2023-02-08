@@ -3,9 +3,11 @@ import classNames from 'classnames/bind';
 import PaginatedItems from '../../components/PaginatedItems/PaginatedItems';
 import * as request from '../../utils/httpRequest';
 import { setCateGorySelected } from '../../redux/selectors';
+import reducers from '../../redux/reducer';
 
-import { useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect, memo } from 'react';
+
 import CategoryHeader from './CategoryHeader';
 import Loading from '../../components/Loading';
 import Filter from './Filter';
@@ -14,36 +16,37 @@ const cx = classNames.bind(styles)
 
 function Product() {
     const cate = useSelector(setCateGorySelected)
+    const dispatch = useDispatch()
 
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
 
-    useEffect(() => {
-        setLoading(true)
-        const fetchAPI= async () => {
-            if(cate.name === "All") {
-                const dataResult = await request.get("/item")
-                setData(dataResult)
-            } else {
-                const dataResult = await request.get("/item/cate", {
-                    params: {
-                        id: cate._id
-                    }
-                })
-                setData(dataResult)
-            }
-            setLoading(false)
+    const fetchAPI= async () => {
+        setLoading(true)  
+        if(cate.name === "All") {
+            const dataResult = await request.get("/item")
+            setData(dataResult)
+        } else {
+            const dataResult = await request.get("/item/cate", {
+                params: {
+                    id: cate._id
+                }
+            })
+            setData(dataResult)
         }
-        fetchAPI()
-    }, [cate])
-    
-    if(loading) {
-        return (
-            <div className={cx('pending')}>
-                <Loading/>
-            </div>
-        )
+        setLoading(false)
     }
+
+    useEffect(() => {
+        fetchAPI()
+        return () => {
+            dispatch(reducers.actions.selectFilter({
+                id: 1,
+                value: "default",
+                label: "Default"
+            }))
+        }
+    }, [cate])
 
     return (
         <div className={cx('wrapper')}>
@@ -51,9 +54,15 @@ function Product() {
                 <CategoryHeader/>
             </div>
             <Filter/>
-            <PaginatedItems itemsPerPage={21} items={data}/>
+            {loading ? (
+                <div className={cx('pending')}>
+                    <Loading/>
+                </div>
+            ) : (
+                <PaginatedItems itemsPerPage={21} items={data}/>
+            )}
         </div>
     );
 }
 
-export default Product;
+export default memo(Product);

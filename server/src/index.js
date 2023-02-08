@@ -16,6 +16,7 @@ mongoose.set('strictQuery', false)
 
 const User = require('./app/models/user');
 const Banner = require('./app/models/banner');
+const Product = require('./app/models/Item');
 const data = require('./data');
 
 // database init
@@ -93,6 +94,7 @@ mongoose.connect(process.env.MONGO_URL , {
 
     /*ONLY ADD DATA ONE TIME*/ 
     //Banner.insertMany(data.banners)
-    //User.insertMany(data.dataUser)
+    //Product.insertMany([{"cate_id":"63c3a0f94c7f28ee52a8feb8","name":"Blue t-shirt","description":"Shirt made of soft and durable material","price":220.5,"view_total": 0,"sale_off": 0,"images":["https://lh3.googleusercontent.com/CX1Hg1a3Set1C1V1-zcioxVWYVyUQQKrOV2eZr6JUfpM1zmlZp8HOyH_PNpEDJQORLMnfz924JL7_tbuGdw5z9vFkG2EkBJRwoS1BxoEKCktIlXpHcHW-dinZlRDa_8brYVZzVC3", "https://bucket.nhanh.vn/store/25618/artCT/87003/ao_thun_dep_1.jpg"],"colors":[{"color":"blue","hex_code":"0000FF"}, {"color":"white","hex_code":"fff"}],"sizes":[{"size":"Medium","size_code":"M"},{"size":"Large","size_code":"L"}],"quantity":10},
+    //{"cate_id":"63c3a0f94c7f28ee52a8feb8","name":"Sundree t-shirt","description":"The shirt is made of durable materials, the design is modern and cool","price":300,"view_total": 0,"sale_off": 0,"images":["https://bucket.nhanh.vn/store/25618/artCT/87003/ao_thun_dep_1.jpg"],"colors":[{"color":"blue","hex_code":"0000FF"}, {"color":"white","hex_code":"fff"}],"sizes":[{"size":"Medium","size_code":"M"},{"size":"Large","size_code":"L"},{"size":"Super Large","size_code":"XL"}],"quantity":0}])
 }).catch((error) => console.log(`${error} did not connect`))
 

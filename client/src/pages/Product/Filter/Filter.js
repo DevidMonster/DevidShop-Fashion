@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setFilterSelected } from '../../../redux/selectors';
 import reducers from '../../../redux/reducer'; 
 import { RxDot, RxDotFilled } from 'react-icons/rx';
+import { useEffect } from 'react';
 
 const cx = classNames.bind(styles)
 
@@ -26,6 +27,7 @@ function Filter() {
         console.log(item)
         dispatch(reducers.actions.selectFilter(item))
     }
+
 
     return (
         <div className={cx('wrapper')}>

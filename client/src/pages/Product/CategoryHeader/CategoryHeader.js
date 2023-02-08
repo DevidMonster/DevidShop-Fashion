@@ -24,6 +24,13 @@ function CategoryHeader() {
             setLoading(false)
         } 
         fetchAPI()
+
+        return () => {
+            dispatch(reducers.actions.changeCate({
+                _id: "lord",
+                name: "All"
+            }))
+        }
     }, [])
 
     const handleSetCate = (item) => {
