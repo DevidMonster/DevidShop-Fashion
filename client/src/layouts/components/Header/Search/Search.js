@@ -23,7 +23,7 @@ function Search({ className }) {
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(false);
     const [showSpinner, setShowSpinner] = useState(false);
-    const [searchData, setSearchData] = useState(JSON.parse(localStorage.getItem("searchHistory")) || [])
+    const [searchData, setSearchData] = useState(state.data)
     const resultValue = useDebounce(searchValue, 500);
     
     const navigate = useNavigate()
@@ -75,11 +75,7 @@ function Search({ className }) {
     const handleNavigate = () => {
         if(searchValue !== "") {
             if(!searchData.includes(searchValue)) {
-                let searchHistory = []
-                searchHistory = [searchValue]
-                if(!!searchData) {
-                    searchHistory = [searchValue, ...searchData]
-                }
+                let searchHistory = [searchValue, ...searchData]
                 localStorage.setItem("searchHistory", JSON.stringify(searchHistory))
                 setSearchData(searchHistory)
             }
