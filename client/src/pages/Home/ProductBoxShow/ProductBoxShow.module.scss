@@ -4,29 +4,9 @@
     .post {
         display: flex;
         flex-wrap: nowrap;
-        gap: 10px;
+        gap: 20px;
     }
 }
 
 
-.hp_wrapper {
-    margin-bottom: 30px;
-
-    button::before {
-        color: var(--text-color) !important;
-        font-size: 3rem;
-    }
-
-    .title {
-        color: var(--text-color);
-        margin-bottom: 20px;
-    }
-
-    .show {
-        display: flex;
-        gap: 60px;  
-        align-items: center;
-
-    }
-}
 

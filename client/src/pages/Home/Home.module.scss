@@ -10,5 +10,14 @@
         overflow: hidden;
         overflow-x: hidden;
         overflow-y: hidden;
+
+        & > div > button:first-child {
+            left: 0 !important;
+        }
+
+        & > div > button::before {
+            font-size: 3rem;
+            ;
+        }
     }
 }

@@ -31,7 +31,7 @@ function ItemBox({ pending = false, item }) {
                                 <div><Button icon={<BsPlusSquare/>} to={`/detail?id=${item._id}`} className={cx('fix_color')}/></div>
                             </Tippy>
                         ) : (
-                            <p>Đã hết hàng</p>
+                            <p>Sold out</p>
                         )}
                     </div>
                 </div>

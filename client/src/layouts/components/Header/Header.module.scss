@@ -3,11 +3,11 @@
      --search-top-spacer: 9px;
      --search-button-width: 52px;
      --search-border-radius: 25px;
-     --header-hight: 60px;
+     --header-hight: 70px;
      width: 100%;
      height: var(--header-hight);
      display: flex;
-     padding: 0 20px;
+     padding: 0 18px;
      justify-content: space-between;
      align-items: center;
      border-bottom: 1px solid var(--bg-content-color);
@@ -69,6 +69,11 @@
      height: 100%;   
      display: flex;
      align-items: center;
+
+     a > span {
+          padding: 0;
+     }
+
      & img {
           width: 50px;
           height: 50px;
@@ -96,7 +101,7 @@
      width: 440px;
      display: flex;
      align-items: center;
-     justify-content: space-around;
+     justify-content: space-between;
  
 }
 

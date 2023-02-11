@@ -2,6 +2,7 @@
     width: 200px;
     background-color: var(--sidebar-bg);
     -webkit-tap-highlight-color: transparent;
+
     .sidebar_wrapper {
         overflow: hidden;
         align-items: center;
@@ -13,7 +14,7 @@
         padding: 0 8px 56px 8px;
         position: -webkit-sticky;
         position: sticky;
-        top: 60px;
+        top: 70px;
         z-index: 8;
     }
 }
@@ -28,13 +29,6 @@
     perspective: 1px;
     transform-style: preserve-3d;
 
-    &::-webkit-scrollbar-thumb {
-        display: none;
-    }
-
-    &:hover::-webkit-scrollbar-thumb {
-        display: block;
-    }
 }
 
 @media (max-width: 991px) {

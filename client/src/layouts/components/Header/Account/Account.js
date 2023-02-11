@@ -5,7 +5,7 @@ import Tippy from '@tippyjs/react/headless';
 
 import { useSelector } from "react-redux";
 import { Wrapper } from "../../../../components/popper";
-import { FaUserCircle, AiOutlineRight } from '../../../../asset/icons';
+import { FaUserCircle, AiOutlineRight, CgLogOut } from '../../../../asset/icons';
 import images from "../../../../asset/images";
 import Button from "../../../../components/Button";
 import MultiPage from "./MultiPage";
@@ -32,10 +32,11 @@ function Account() {
                     </div>
                 </Link>
                 <MultiPage>
-                    <Button className={cx("fix")} leftIcon={<FaUserCircle />} text to={'/account'}>Tài Khoản</Button> 
+                    <Button className={cx("fix")} leftIcon={<FaUserCircle />} text to={'/account'}>Your Account</Button> 
+                    <Button className={cx("fix", "showed_group")} leftIcon={<SwitchMode />} text>Dark mode</Button> 
                 </MultiPage>
-                <MultiPage className={cx('showed_group')}>
-                    <Button className={cx("fix")} leftIcon={<SwitchMode />} text>Dark mode</Button> 
+                <MultiPage>
+                    <Button className={cx("fix")} leftIcon={<CgLogOut />} text>LogOut</Button> 
                 </MultiPage>
             </Wrapper>
         </div>

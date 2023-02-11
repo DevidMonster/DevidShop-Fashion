@@ -18,6 +18,7 @@ import QuantityBox from './QuantityBox';
 import ReviewBox from './ReviewBox';
 import { useScroll } from '../../hooks';
 import Loading from '../../components/Loading';
+import RelatedProduct from './RelatedProduct';
 
 const cx = classNames.bind(styles)
 
@@ -106,6 +107,7 @@ function Detail() {
             </div>
             <div className={cx('bottom')}>
                 <div className={cx('related_products')}>
+                    <RelatedProduct cateId={data.cate_id}/>
                 </div>
             </div>
         </div>

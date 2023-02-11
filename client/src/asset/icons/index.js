@@ -1,4 +1,5 @@
 export * from 'react-icons/ai'
+export * from 'react-icons/cg'
 export * from 'react-icons/bi'
 export * from 'react-icons/hi'
 export * from 'react-icons/bs'

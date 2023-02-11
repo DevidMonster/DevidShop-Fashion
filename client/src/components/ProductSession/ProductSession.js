@@ -1,12 +1,12 @@
-import styles from './ProductBoxShow.module.scss';
+import styles from './ProductSession.module.scss';
 import classNames from 'classnames/bind';
-import ItemBox from '../../../components/ItemBox';
+import ItemBox from '../ItemBox';
 
 import ResizeDetector from 'react-resize-detector';
 import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
-import PrevButton from '../../../components/Slick/PrevButton';
-import NextButton from '../../../components/Slick/NextButton';
+import PrevButton from '../Slick/PrevButton';
+import NextButton from '../Slick/NextButton';
 
 const cx = classNames.bind(styles)
 

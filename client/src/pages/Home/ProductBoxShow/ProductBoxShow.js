@@ -2,7 +2,7 @@ import styles from './ProductBoxShow.module.scss';
 import classNames from 'classnames/bind';
 
 import CTA from '../../../components/CTA';
-import ProductSession from './ProductSession';
+import ProductSession from '../../../components/ProductSession';
 import images from '../../../asset/images';
 
 import * as request from '../../../utils/httpRequest';
