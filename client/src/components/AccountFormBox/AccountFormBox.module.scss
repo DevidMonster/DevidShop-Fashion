@@ -1,0 +1,34 @@
+.wrapper {
+
+    // button,a {
+    //     font-size: 1rem;
+    //     padding: 10px 3px;
+    //     min-width: 44px;
+    // }
+}
+
+@media (max-width: 991px) { 
+    .wrapper {
+        button,a {
+            font-size: 1.3rem;
+            padding: 10px 3px;
+            min-width: 60px;
+        }
+    }
+}
+
+/* tablet desktop: 768px */
+/* mobile */
+@media (max-width: 767px) {
+    //.wrapper {
+        // button,a {
+        //     font-size: 1rem;
+        //     padding: 10px 3px;
+        //     min-width: 44px;
+        // }
+    //}
+}
+
+@media (max-width: 660px) {
+
+}

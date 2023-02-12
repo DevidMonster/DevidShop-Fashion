@@ -15,6 +15,7 @@ import reducers from './redux/reducer';
 import { screenModeSelector, toggleSideBarSelector } from './redux/selectors';
 import Button from './components/Button';
 import { RiArrowUpSLine } from './asset/icons';
+import ActionModal from './components/ActionModal';
 
 const cx = classNames.bind(styles)
 
@@ -66,6 +67,7 @@ function App() {
       <div className={cx("app", { dark_mode: mode })}>
           <CheckURL />
           <ResizeDetector handleWidth onResize={handleResize} />
+          <ActionModal/>
           <Routes>
             {publicRoutes.map((route, index) => {
               let Layout = DefaultLayout

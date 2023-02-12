@@ -47,6 +47,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const reducers = createSlice({
     name: 'globalState',
     initialState: {
+        user: false,
         active: false,
         prevUrl: "/",
         toggle_mode: true,
@@ -59,9 +60,21 @@ const reducers = createSlice({
             id: 1,
             value: "default",
             label: "Default"
-        }
+        },
+        openModal: { 
+            bool: false, 
+            type: "login"
+        },
     },
     reducers: {
+        logout: (state, action) => {
+            localStorage.removeItem("user")
+            state.user = false
+        },
+        currentUser: (state, action) => {    
+            localStorage.setItem("user", JSON.stringify(action.payload))
+            state.user = action.payload
+        },
         switchMode: (state, action) => {
             let newState = !action.payload
             localStorage.setItem('mode', newState)
@@ -90,6 +103,13 @@ const reducers = createSlice({
         },
         selectFilter: (state, action) => {
             state.filter = action.payload
+        },
+        toggleModel: (state, action) => {
+            if(action.payload) {
+                state.openModal = action.payload
+            } else {
+                state.openModal.bool = !state.openModal.bool
+            }
         }
     }
 })

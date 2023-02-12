@@ -11,22 +11,27 @@ import Account from "./Account";
 import Notification from "./Notification";
 import SwitchMode from "../../../components/SwitchMode";
 import CartAlert from "./CartAlert";
+import AccountFormBox from "../../../components/AccountFormBox";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { menuToggle } from "../../../redux/actions";
 import reducers from "../../../redux/reducer";
-import { screenModeSelector, toggleSideBarSelector } from "../../../redux/selectors";
+import { screenModeSelector, toggleSideBarSelector, userSelector } from "../../../redux/selectors";
 
 const cx = classNames.bind(styles)
 
 function Header({ isSideBar = true }) {
-    const user = true  //localStorage.getItem("user") || false
+    const [hasLogin, setHasLogin] = useState(false)
     let mode = useSelector(screenModeSelector) || false
     if(localStorage.getItem('mode'))  mode = localStorage.getItem('mode') === "true" ? true : false;
     
     let toggleMode = useSelector(toggleSideBarSelector)
-
+    
+    let user = useSelector(userSelector)
+    if(localStorage.getItem("user")) user = JSON.parse(localStorage.getItem("user"))
+    console.log(user)
+    
     const dispatch = useDispatch()
 
     const toggleClass = () => {
@@ -39,7 +44,13 @@ function Header({ isSideBar = true }) {
     
     const search = useRef()
 
-
+    useEffect(() => {
+        if(user) {
+            setHasLogin(true)
+        } else {
+            setHasLogin(false)
+        }
+    }, [user])
     return <header className={cx('header_wrapper')}>
         {isSideBar && (            
             <div className={cx("menu_toggle")} onClick={handleToggleMenu}>
@@ -67,14 +78,13 @@ function Header({ isSideBar = true }) {
                 <SwitchMode/>
             </div>
             <CartAlert/>
-            <Notification/>
-            {user ? (
-                <Account/>
+            {hasLogin ? (
+                <>
+                    <Notification/>
+                    <Account/>
+                </>
             ) : (
-                <div className={cx("signIn_signUp")}>
-                        <Button outline small>SignIn</Button>
-                        <Button small>SignUp</Button>
-                </div>
+                <AccountFormBox/>
             )}
         </div>  
     </header>;

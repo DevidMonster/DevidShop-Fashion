@@ -22,4 +22,31 @@ const getUserById = async (req, res) => {
     }
 }
 
-module.exports = { getUser, getUserById }
+const userLogin = async (req, res) => {
+    try {
+        const { userName, passWord } = req.body
+        console.log(userName, passWord)
+        const user = await User.findOne({ 
+            $or : [ 
+                {
+                    $and: [
+                        {email: userName},
+                        {password: passWord}
+                    ]
+                }, 
+                {
+                    $and: [
+                        {phoneNumber: userName},
+                        {password: passWord}
+                    ]
+                }
+            ]
+        })
+        console.log(user)
+        res.status(200).json(user)
+    } catch(err) {
+        res.status(404).json({message: err.message})
+    }
+}
+
+module.exports = { getUser, getUserById, userLogin }
