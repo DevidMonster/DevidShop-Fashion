@@ -47,7 +47,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const reducers = createSlice({
     name: 'globalState',
     initialState: {
-        user: false,
+        user: JSON.parse(localStorage.getItem("user")) || false,
         active: false,
         prevUrl: "/",
         toggle_mode: true,
@@ -65,6 +65,7 @@ const reducers = createSlice({
             bool: false, 
             type: "login"
         },
+        contentNotice: {}
     },
     reducers: {
         logout: (state, action) => {
@@ -110,6 +111,9 @@ const reducers = createSlice({
             } else {
                 state.openModal.bool = !state.openModal.bool
             }
+        },
+        notification: (state, action) => {
+            state.contentNotice = action.payload
         }
     }
 })

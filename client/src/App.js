@@ -16,6 +16,7 @@ import { screenModeSelector, toggleSideBarSelector } from './redux/selectors';
 import Button from './components/Button';
 import { RiArrowUpSLine } from './asset/icons';
 import ActionModal from './components/ActionModal';
+import Toastify from './components/Toastify';
 
 const cx = classNames.bind(styles)
 
@@ -65,7 +66,8 @@ function App() {
   return (
     <Router>
       <div className={cx("app", { dark_mode: mode })}>
-          <CheckURL />
+          <CheckURL/>
+          <Toastify/>
           <ResizeDetector handleWidth onResize={handleResize} />
           <ActionModal/>
           <Routes>
@@ -76,7 +78,7 @@ function App() {
               if (route.layout) {
                 Layout = route.layout;
               } else if (route.layout === null) {
-                  Layout = Fragment;
+                Layout = Fragment;
               }
 
               return (

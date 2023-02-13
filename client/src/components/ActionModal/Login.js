@@ -8,6 +8,7 @@ import reducers from '../../redux/reducer';
 import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+
 const cx = classNames.bind(styles)
 
 function Login() {
@@ -43,6 +44,7 @@ function Login() {
         return true
     }
 
+    
     const login = async () => {
         setLoading(true)
         const checkUser = await request.post("/general/user/login", {
@@ -50,6 +52,7 @@ function Login() {
             passWord: passWord
         })
         if(checkUser) {
+            dispatch(reducers.actions.notification({ content: "Login Success", type: "success" }))
             dispatch(reducers.actions.currentUser(checkUser))
             dispatch(reducers.actions.toggleModel(false))
         } else {

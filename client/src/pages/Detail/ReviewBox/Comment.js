@@ -17,7 +17,6 @@ function Comment({ id }) {
     const [reload, setReload] = useState(false)
 
     const handlePostData = () => {
-        console.log(contentValue)
         if(nameValue !== "" && emailValue !== "" && contentValue !== "") {
            
             const object = {

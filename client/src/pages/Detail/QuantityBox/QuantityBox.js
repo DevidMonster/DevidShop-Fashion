@@ -4,15 +4,21 @@ import { useEffect, useState, memo } from 'react';
 
 import Button from '../../../components/Button';
 import { RiArrowUpSLine, RiArrowDownSLine } from '../../../asset/icons';
+import { useDispatch } from 'react-redux';
+import detail from '../../../redux/detail';
 
 const cx = classNames.bind(styles)
 
 function QuantityBox({ quantity }) {
-    const [number, setNumber] = useState(0)
+    const [number, setNumber] = useState(1)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         if(number === "") {
-            setNumber(0)
+            setNumber(1)
+            dispatch(detail.actions.addQuantity(1))
+        } else {
+            dispatch(detail.actions.addQuantity(number))
         }
     }, [number]) 
 
@@ -23,14 +29,14 @@ function QuantityBox({ quantity }) {
     }
 
     const handleDecrease = () => {
-        if(number > 0) {
+        if(number > 1) {
             setNumber(prev => parseInt(prev) - 1)
         }
     }
 
     const changeQuantity = (e) => {
         
-        if(e.currentTarget.value >= 0 && e.currentTarget.value <= quantity) {
+        if(e.currentTarget.value >= 1 && e.currentTarget.value <= quantity) {
             setNumber(e.currentTarget.value)
         }
     }
@@ -38,11 +44,11 @@ function QuantityBox({ quantity }) {
     return (  
         <div className={cx('wrapper')}>
             <div className={cx('action')}>
-                <Button text icon={<RiArrowDownSLine/>} onClick={handleDecrease} className={cx('des_btn')}/>
+                <Button type="button" text icon={<RiArrowDownSLine/>} onClick={handleDecrease} className={cx('des_btn')}/>
                 <div className={cx('number')}>
-                    <input type={"number"} value={number} onChange={e => changeQuantity(e)} className={cx('quantity_input')}/>
+                    <input type={"number"} value={number} onChange={e => changeQuantity(e)} name="quantity" className={cx('quantity_input')}/>
                 </div>
-                <Button text icon={<RiArrowUpSLine/>} onClick={handleIncrease} className={cx('inc_btn')}/>
+                <Button type="button" text icon={<RiArrowUpSLine/>} onClick={handleIncrease} className={cx('inc_btn')}/>
             </div>
             <p>Number of products: {quantity}</p>
         </div>

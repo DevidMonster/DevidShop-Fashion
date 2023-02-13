@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import Button from '../../components/Button';
 import { AiOutlineLeft, AiOutlineRight } from '../../asset/icons';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { prevUrlSelector } from '../../redux/selectors';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -19,6 +19,8 @@ import ReviewBox from './ReviewBox';
 import { useScroll } from '../../hooks';
 import Loading from '../../components/Loading';
 import RelatedProduct from './RelatedProduct';
+import detail from '../../redux/detail';
+import reducers from '../../redux/reducer';
 
 const cx = classNames.bind(styles)
 
@@ -27,10 +29,10 @@ function Detail() {
     const [loading, setLoading] = useState(false)
     const prevUrl = useSelector(prevUrlSelector)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     
     const [id] = useSearchParams()
-    console.log(id.get('id'))
-    useEffect(useScroll, [])
+    useEffect(useScroll, [id])
     
     useEffect(() => {
         setLoading(true)
@@ -49,6 +51,16 @@ function Detail() {
 
     const handleGoBack = () => {
         navigate(`${prevUrl}`)
+    }
+
+    const handleSubmit = () => {
+        dispatch(reducers.actions.notification({ content: "Add Item Success", type: "success" }))
+        dispatch(detail.actions.addItem({
+            id: data._id,
+            name: data.name,
+            price: data.sale_off === 0 ? data.price : data.price - (data.price * (data.sale_off / 100)),
+            image: data.images[0]
+        }))
     }
 
     return ( 
@@ -76,12 +88,11 @@ function Detail() {
                                 <h2 className={cx('item_name')}>{data.name}</h2>
                             </TitleBox>
                             <TitleBox title={"Price "}>
-                                {data.sale_off === 0 ? (
+                                {data.sale_off === 0 ? ( 
                                     <p className={cx('item_price')}>{data.price} VNĐ</p>
                                 ) : (
                                     <p className={cx('item_price')}><span className={cx('old_price')}>({data.price})</span> {data.price - (data.price * (data.sale_off / 100))} VNĐ</p>
                                 )}
-                                
                             </TitleBox>
                             <TitleBox title={"Description "}>
                                 <p className={cx('item_description')}>{data.description}</p>
@@ -97,7 +108,7 @@ function Detail() {
                             <TitleBox title={"Quantity "}>
                                 <QuantityBox quantity={data.quantity}/>
                             </TitleBox>
-                            <Button large disibled={data.quantity === 0}>Add to cart</Button>
+                            <Button large disibled={data.quantity === 0} onClick={handleSubmit}>Add to cart</Button>
                         </div>
                     </div>
                 )}

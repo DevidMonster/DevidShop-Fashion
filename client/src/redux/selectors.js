@@ -16,6 +16,9 @@ export const setFilterSelected = (state) => state.mainReducer.filter
 
 export const toggleModalSelector = (state) => state.mainReducer.openModal
 
+export const noticeSelector = (state) => state.mainReducer.contentNotice
+
+
 // export const reducerSelector = createSelector(
 //     screenModeSelector,
 //     toggleSideBarSelector, 

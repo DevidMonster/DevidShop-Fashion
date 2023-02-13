@@ -2,14 +2,15 @@
     width: 181px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    border: 0.5px solid var(--bg-content-color);
     gap: 10px;
     transition: background-color 0.3s ease-in-out;
     border-radius: 25px;
     padding: 5px;
 
-    &:hover {
-     background-color: var(--bg-content-color);
+     &:hover {
+          border: 0.5px solid transparent;
+          background-color: var(--bg-content-color);
      }
 
      h3 {
