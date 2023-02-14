@@ -83,7 +83,10 @@ function Header({ isSideBar = true }) {
                     <Account/>
                 </>
             ) : (
-                <AccountFormBox/>
+                <>
+                    <div className={cx("forMb")}><SwitchMode/></div>
+                    <AccountFormBox/>
+                </>
             )}
         </div>  
     </header>;

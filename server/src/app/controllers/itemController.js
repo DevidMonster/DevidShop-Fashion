@@ -35,5 +35,27 @@ const getItemByCategory = async (req, res) => {
     }
 }
 
-module.exports = { getItem, getItemByCategory }
+const getItemById = async (req, res) => {
+    try {
+        const { id } = req.params
+        const item = await Product.findById({_id: id})
+        console.log(item)
+        res.status(200).json(item)
+    } catch(err) {
+        res.status(404).json({message: err.message})
+    }
+}
+
+const addUserLiked = async (req, res) => {
+    try {
+        const { id, likes } = req.body
+        console.log(likes)
+        const item = await Product.updateOne({ _id: id }, { $set: { liked: likes } })
+        res.status(200).json(item)
+    } catch(err) {
+        res.status(404).json({message: err.message})
+    }
+}
+
+module.exports = { getItem, getItemByCategory, addUserLiked, getItemById }
 

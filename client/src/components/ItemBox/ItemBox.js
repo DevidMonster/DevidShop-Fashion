@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Button from '../Button';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
+import Liked from './Liked';
 
 const cx = classNames.bind(styles)
 
@@ -19,6 +20,7 @@ function ItemBox({ pending = false, item }) {
     } else {
         return (  
             <div className={cx('wrapper')}>
+                <Liked likes={item.liked} productId={item._id} className={cx('position')}/>
                 <div className={cx('image_item')}>
                     <img src={item.images[0]} alt={item.name}/>
                     <div className={cx('bg_hover', { disabled: item.quantity === 0 })}>

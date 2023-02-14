@@ -43,6 +43,7 @@ const ProductSchema = new mongoose.Schema(
             size_code: String
         }
     ],
+    liked: Array,
   },
   { timestamps: true }
 );

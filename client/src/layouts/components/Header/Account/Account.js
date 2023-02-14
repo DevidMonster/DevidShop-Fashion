@@ -28,6 +28,7 @@ function Account() {
 
     const handleLogout = () => {
         dispatch(reducers.actions.logout())
+        dispatch(reducers.actions.notification({ content: "Logout success", type: "success" }))
     }
 
     const renderResult = (attrs) => (

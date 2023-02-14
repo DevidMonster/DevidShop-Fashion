@@ -1,7 +1,8 @@
 .current-time {
-    font-size: 1.4rem;
-    font-weight: 500;
-
+     font-size: 1.4rem;
+     font-weight: 500;
+     align-items: center;
+     display: flex;
     .time {
          color: var(--text-color);
     }
@@ -21,4 +22,11 @@
     100% {
          transform: rotate(360deg);
     }
+}
+
+
+@media (max-width: 660px) {
+     .current-time {
+          flex-direction: column-reverse;
+     }
 }

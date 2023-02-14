@@ -1,6 +1,7 @@
 import styles from './AccountFormBox.module.scss';
 import classNames from 'classnames/bind';
 import Button from "../Button";
+import { HiOutlineBarsArrowDown } from 'react-icons/hi2';
 
 import reducers from '../../redux/reducer';
 
@@ -19,6 +20,7 @@ function AccountFormBox() {
         <div className={cx("wrapper")}>
             <Button outline small onClick={() => openModal("login")}>SignIn</Button>   
             <Button small onClick={() => openModal("register")}>SignUp</Button>
+
         </div>
     );
 }

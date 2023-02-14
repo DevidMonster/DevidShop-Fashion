@@ -105,6 +105,10 @@
  
 }
 
+.forMb {
+     transition: all 0.3s ease-in-out;
+     display: none;
+}
 
 /* tablet nomal destop: 992px */
 /* tablet && mobile */
@@ -132,6 +136,10 @@
 }
 
 @media (max-width: 660px) {
+     .header_wrapper {
+          padding: 0 5px;
+     }
+
      .input_search {
           display: none;
 
@@ -167,5 +175,12 @@
      }
      .theme_action {
           display: none;
+     }
+     .forMb {
+          display: block;
+          position: absolute;
+          bottom: -60px;
+          right: 0;
+          transform: rotateZ(90deg);
      }
 }
