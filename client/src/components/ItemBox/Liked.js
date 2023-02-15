@@ -1,7 +1,7 @@
 import styles from './ItemBox.module.scss';
 import classNames from 'classnames/bind';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo } from "react";
 import { MdOutlineFavoriteBorder, MdOutlineFavorite } from "../../asset/icons";
 
 import * as request from '../../utils/httpRequest';
@@ -81,4 +81,4 @@ function Liked({ productId, className }) {
     
 }
 
-export default Liked;
+export default memo(Liked);
