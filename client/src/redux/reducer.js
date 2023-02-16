@@ -49,6 +49,7 @@ const reducers = createSlice({
     initialState: {
         user: JSON.parse(localStorage.getItem("user")) || false,
         active: false,
+        reRender: false,
         prevUrl: "/",
         toggle_mode: true,
         data: JSON.parse(localStorage.getItem("searchHistory")) || [],
@@ -80,6 +81,9 @@ const reducers = createSlice({
             let newState = !action.payload
             localStorage.setItem('mode', newState)
             state.active = !state.active
+        },
+        reRenderComponent: (state, action) => {
+            state.reRender = !state.reRender
         },
         saveURL: (state, action) => {
             localStorage.setItem('prevUrl', action.payload);

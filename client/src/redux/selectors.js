@@ -18,7 +18,7 @@ export const toggleModalSelector = (state) => state.mainReducer.openModal
 
 export const noticeSelector = (state) => state.mainReducer.contentNotice
 
-
+export const willReRender = (state) => state.mainReducer.reRender
 // export const reducerSelector = createSelector(
 //     screenModeSelector,
 //     toggleSideBarSelector, 

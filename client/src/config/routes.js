@@ -6,6 +6,7 @@ const routes = {
     about: '/about',
     blog: '/blog',
     contact: '/contact',
+    favorite: '/favorite',
 };
 
 

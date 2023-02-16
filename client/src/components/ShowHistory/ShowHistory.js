@@ -17,7 +17,7 @@ function ShowHistory({ index , data }) {
 
     return (
         <div className={cx('wrapper')}>
-            <Link to={`/product/${data}`} className={cx('search-box')}>
+            <Link to={`/product?search=${data}`} className={cx('search-box')}>
                 <span className={cx('icon')}>
                     <BiTimeFive/>
                 </span>

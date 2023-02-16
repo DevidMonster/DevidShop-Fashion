@@ -26,8 +26,12 @@ const getItem = async (req, res) => {
 
 const getItemByCategory = async (req, res) => {
     try {
-        const { id } = req.query
-        const item = await Product.find({cate_id: id})
+        const { id, search } = req.query
+        const item = await Product.find({cate_id: id,
+            $or: [
+                { name: { $regex: search, $options: 'i' } },
+            ]
+        })
         console.log(item)
         res.status(200).json(item)
     } catch(err) {

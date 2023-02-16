@@ -46,11 +46,15 @@ function Liked({ productId, className }) {
 
     const handleLikedProduct = () => {
         const newData = [...likes, user._id].filter(item => item !== "")
+        dispatch(reducers.actions.notification({ content: 'Add to favorite' }))
+        dispatch(reducers.actions.reRenderComponent())
         postAPI(newData)
     }
 
     const handleUnLikedProduct = () => {
         const newData = likes.filter(item => item !== user._id)
+        dispatch(reducers.actions.notification({ content: 'Unlike Item' }))
+        dispatch(reducers.actions.reRenderComponent())
         postAPI(newData)
     }
 
