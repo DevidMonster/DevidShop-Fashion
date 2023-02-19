@@ -18,7 +18,7 @@ function QuantityBox({ quantity }) {
             setNumber(1)
             dispatch(detail.actions.addQuantity(1))
         } else {
-            dispatch(detail.actions.addQuantity(number))
+            dispatch(detail.actions.addQuantity(Number(number)))
         }
     }, [number]) 
 
@@ -44,11 +44,11 @@ function QuantityBox({ quantity }) {
     return (  
         <div className={cx('wrapper')}>
             <div className={cx('action')}>
-                <Button type="button" text icon={<RiArrowDownSLine/>} onClick={handleDecrease} className={cx('des_btn')}/>
+                <Button type="button" small onClick={handleDecrease} className={cx('des_btn')}><RiArrowDownSLine/></Button>
                 <div className={cx('number')}>
                     <input type={"number"} value={number} onChange={e => changeQuantity(e)} name="quantity" className={cx('quantity_input')}/>
                 </div>
-                <Button type="button" text icon={<RiArrowUpSLine/>} onClick={handleIncrease} className={cx('inc_btn')}/>
+                <Button type="button" small onClick={handleIncrease} className={cx('inc_btn')}><RiArrowUpSLine/></Button>
             </div>
             <p>Number of products: {quantity}</p>
         </div>

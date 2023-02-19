@@ -101,7 +101,7 @@ function Login() {
                             <label htmlFor="phone">Phone Number:</label>
                             <div className={cx('input_setup')}>
                                 <span>(+84)</span>
-                                <input id="phone" value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} placeholder="Enter your Phone Number" />
+                                <input id="phone" type={"tel"} value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} placeholder="Enter your Phone Number" />
                             </div>
                             <p>{errorMessage.phone}</p>
                         </div>

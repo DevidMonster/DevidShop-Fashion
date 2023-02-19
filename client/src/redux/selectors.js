@@ -19,6 +19,16 @@ export const toggleModalSelector = (state) => state.mainReducer.openModal
 export const noticeSelector = (state) => state.mainReducer.contentNotice
 
 export const willReRender = (state) => state.mainReducer.reRender
+
+export const itemUpload = (state) => state.detailReducer.item
+
+export const quantitySelector = (state) => state.detailReducer.quantity
+
+export const colorSelector = (state) => state.detailReducer.color
+
+export const sizeSelector = (state) => state.detailReducer.size
+
+export const cartsStateSelector = (state) => state.detailReducer.cartsState
 // export const reducerSelector = createSelector(
 //     screenModeSelector,
 //     toggleSideBarSelector, 

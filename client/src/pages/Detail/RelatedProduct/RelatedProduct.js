@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 const cx = classNames.bind(styles)
 
 function RelatedProduct({cateId}) {
-
+    
     const [data, setData] = useState([])
 
     useEffect(() => {

@@ -1,8 +1,9 @@
 .wrapper_pending {
     width: 20%;
-    height: calc(0.58 * 100vh);  
+    height: calc(0.58 * 100vh);
     border-radius: 20px;
-    background-image: linear-gradient( to right, rgba(0, 0, 0, 0.25) 50%, rgba(255, 255, 255, 0.15) 80%, rgba(0, 0, 0, 0.25) 90%);;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.25) 50%, rgba(255, 255, 255, 0.15) 80%, rgba(0, 0, 0, 0.25) 90%);
+    ;
     background-size: 200% 200%;
     animation: linearBg 1.25s ease-in-out infinite;
 }
@@ -11,6 +12,7 @@
     0% {
         background-position: 0% 0%;
     }
+
     100% {
         background-position: 200% 0%;
     }
@@ -20,7 +22,7 @@
 .wrapper {
     position: relative;
     width: 20%;
-    height: calc(0.58 * 100vh);  
+    height: calc(0.58 * 100vh);
     border-radius: 20px;
 
     .image_item {
@@ -72,7 +74,7 @@
         visibility: unset !important;
         width: 100%;
         height: 100%;
-    
+
         p {
             background-color: var(--primary-bg);
             padding: 10px;
@@ -91,7 +93,7 @@
         a {
             display: block;
             max-width: 100%;
-            white-space:nowrap;
+            white-space: nowrap;
             font-size: 1.7rem;
             text-decoration: none;
             color: var(--text-color);
@@ -116,35 +118,33 @@
     }
 }
 
-@media (max-width: 660px) {
+/* tablet nomal destop: 992px */
+/* tablet && mobile */
+@media (max-width: 991px) {
     .wrapper {
-        width: 75%;
-        height: calc(0.8 * 100vh);  
+        width: 30%;
+        height: calc(0.8 * 100vh);
         border-radius: 20px;
-        margin: 0 auto;
     }
 }
 
-.position {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    align-items: center;
-    width: 40px;
-    height: 70px;
-    z-index: 11;
-    top: 10px;
-    right: 10px;
-    background-color: var(--primary-bg);
+/* tablet desktop: 768px */
+/* mobile */
+@media (max-width: 886px) {
+    .wrapper {
+        width: 45%;
+        height: calc(0.8 * 100vh);
+        border-radius: 20px;
+    }
+}
 
-    .count {
-        display: block;
-        padding: 5px;
-        text-align: center;
-        font-size: 1.1rem;
-        color: var(--text-color);
-        background: var(--bg-content-color);
-        border-radius: 10px;
+@media (max-width: 768px) {}
+
+@media (max-width: 660px) {
+    .wrapper {
+        width: 75%;
+        height: calc(0.8 * 100vh);
+        border-radius: 20px;
+        margin: 0 auto;
     }
 }

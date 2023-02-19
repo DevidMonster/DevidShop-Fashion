@@ -51,7 +51,10 @@ function Favorite() {
                 <Loading/>
             </div>
         ) : (
-            <PaginatedItems itemsPerPage={20} items={data}/>
+            <div>
+                <h1 className={cx('title')}>There are {data.length} favorite products</h1>
+                <PaginatedItems itemsPerPage={20} items={data}/>
+            </div>
         )
     );
 }

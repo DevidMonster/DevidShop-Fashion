@@ -11,12 +11,15 @@ function CheckURL() {
     const location = useLocation();
   
     useEffect(() => {
-      // Hàm này sẽ được chạy mỗi khi pathname thay đổi và sẽ lưu pathname trước đó
-      setPrevUrl(location.pathname)
-      dispatch(reducers.actions.saveURL(prevUrl));
-
+      console.log(prevUrl.slice(0, prevUrl.indexOf("?")), location.pathname)
+      if(prevUrl.slice(0, prevUrl.indexOf("?")) !== location.pathname) {
+        const url = `${location.pathname}${location.search.replace(/"?"/g, '?=')}`
+        // Hàm này sẽ được chạy mỗi khi pathname thay đổi và sẽ lưu pathname trước đó
+        setPrevUrl(url)
+        dispatch(reducers.actions.saveURL(prevUrl));
+      }
       // eslint-disable-next-line
-    }, [location.pathname]);
+    }, [location.pathname, location.search]);
   
     return (<></>);
 }

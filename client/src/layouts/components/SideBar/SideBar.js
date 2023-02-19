@@ -29,7 +29,7 @@ function SideBar() {
                 <GroupMenu className={cx("sidebar_subnav")}>
                     <MenuItem to={"/sale"} icon={<TbShoppingCartDiscount />} title={"Sale code"}/>
                     <MenuItem to={"/favorite"} icon={<MdOutlineFavoriteBorder />} title={"Favorite"}/>
-                    <BoxContent/>
+                    <BoxContent active={toggleMode}/>
                     <MenuItem to={"/film"} icon={<MdOndemandVideo />} title={"Short Film"}/>
                 </GroupMenu>
             </div>

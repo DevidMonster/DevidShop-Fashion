@@ -1,11 +1,8 @@
 import styles from './Detail.module.scss';
 import classNames from 'classnames/bind';
 import Button from '../../components/Button';
-import { AiOutlineLeft, AiOutlineRight } from '../../asset/icons';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { prevUrlSelector } from '../../redux/selectors';
-import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { useSearchParams } from 'react-router-dom';
@@ -21,58 +18,68 @@ import Loading from '../../components/Loading';
 import RelatedProduct from './RelatedProduct';
 import detail from '../../redux/detail';
 import reducers from '../../redux/reducer';
+import Liked from '../../components/Liked';
+import BackButton from '../../components/BackButton';
+import { colorSelector, quantitySelector, sizeSelector } from '../../redux/selectors';
 
 const cx = classNames.bind(styles)
 
 function Detail() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false)
-    const prevUrl = useSelector(prevUrlSelector)
-    const navigate = useNavigate()
+    const currentQuantity = useSelector(quantitySelector) || 1
+    const currentColor = useSelector(colorSelector)
+    const currentSize = useSelector(sizeSelector)
     const dispatch = useDispatch()
     
     const [id] = useSearchParams()
     useEffect(useScroll, [id])
     
     useEffect(() => {
-        setLoading(true)
-        const fetchAPI = async () => {
-            const datas = await request.get("/item", {
-                params: {
-                    id: id.get('id')
-                }
-            })
-            setData(datas)
-            setLoading(false)
+        if(!!id.get('id')) {
+            setLoading(true)
+            const fetchAPI = async () => {
+                
+                const datas = await request.get("/item", {
+                    params: {
+                        id: id.get('id')
+                    }
+                })
+                setData(datas)
+                setLoading(false)
+            }
+            fetchAPI()
         }
-        fetchAPI()
     }, [id])
 
-
-    const handleGoBack = () => {
-        navigate(`${prevUrl}`)
-    }
-
     const handleSubmit = () => {
+        const prevCart = JSON.parse(localStorage.getItem("carts")) || []
+       
+        if(prevCart.length > 0) {
+            const prevItem = prevCart.find(item => item.id === `${id.get('id')}${currentColor.color}${currentSize.size}`)
+            if(prevItem) {
+                const newQuantity = prevItem.quantity + currentQuantity
+                console.log(prevItem.quantity + currentQuantity)
+                if(newQuantity > data.quantity) {
+                    dispatch(reducers.actions.notification({ content: "Max item in your cart can't add more" }))
+                    return
+                }
+            }
+        }
+
         dispatch(reducers.actions.notification({ content: "Add Item Success", type: "success" }))
         dispatch(detail.actions.addItem({
             id: data._id,
             name: data.name,
             price: data.sale_off === 0 ? data.price : data.price - (data.price * (data.sale_off / 100)),
-            image: data.images[0]
+            image: data.images[0],
+            maxQuantity: data.quantity
         }))
     }
 
     return ( 
         <div className={cx('wrapper')}>
-            <div className={cx('top')}>
-                <Button leftIcon={<AiOutlineLeft/>} text onClick={handleGoBack}>
-                    Go back
-                </Button>
-                <span className={cx('nav_prev')}>
-                    <p>{prevUrl === "/" ? "Home" : prevUrl.slice(1, prevUrl.length)} <AiOutlineRight/> Detai Page</p>
-                </span>
-            </div>
+            <BackButton currentPage={"Detail Page"}/>
             <div className={cx('main')}>
                 {loading ? (
                     <div className={cx('pending')}>
@@ -82,6 +89,7 @@ function Detail() {
                     <div className={cx('item_detail_box')}>
                         <div className={cx('item-picture')}>
                             <ImageSilde data={data.images} count={data.quantity}/>
+                            <Liked productId={data._id}/>
                         </div>
                         <div className={cx('item-description')}>
                             <TitleBox title={"Name "}>

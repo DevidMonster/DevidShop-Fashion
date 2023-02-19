@@ -1,7 +1,6 @@
 import styles from './AccountFormBox.module.scss';
 import classNames from 'classnames/bind';
 import Button from "../Button";
-import { HiOutlineBarsArrowDown } from 'react-icons/hi2';
 
 import reducers from '../../redux/reducer';
 

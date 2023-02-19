@@ -32,17 +32,19 @@ function Filter() {
     return (
         <div className={cx('wrapper')}>
             <span className={cx('title')}>Choose Filter:</span>
-            {options.map(item => (
-                <label htmlFor={`filter${item.id}`} className={cx('box')} key={item.id}>
-                    {item.id === selected.id ? (
-                        <RxDotFilled className={cx('fix')}/>
-                    ) : (
-                        <RxDot className={cx('fix')}/>
-                    )}
-                    <input type={"radio"} id={`filter${item.id}`} value={item.value} checked={item.id === selected.id} onChange={() => handleSelected(item)}/>
-                    <span>{item.label}</span>
-                </label>
-            ))}
+            <div className={cx('option')}>
+                {options.map(item => (
+                    <label htmlFor={`filter${item.id}`} className={cx('box')} key={item.id}>
+                        {item.id === selected.id ? (
+                            <RxDotFilled className={cx('fix')}/>
+                        ) : (
+                            <RxDot className={cx('fix')}/>
+                        )}
+                        <input type={"radio"} id={`filter${item.id}`} value={item.value} checked={item.id === selected.id} onChange={() => handleSelected(item)}/>
+                        <span>{item.label}</span>
+                    </label>
+                ))}
+            </div>
         </div>
     );
 }

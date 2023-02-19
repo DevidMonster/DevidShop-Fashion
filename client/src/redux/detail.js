@@ -12,7 +12,8 @@ const detail = createSlice({
             name: "",
             price: 0,
             images: "",
-        }
+        },
+        cartsState: false 
     },
     reducers: {
         addColor: (state, action) => {
@@ -31,11 +32,12 @@ const detail = createSlice({
                 size: state.size,
                 quantity: state.quantity
             }
+            newItem.id = `${newItem.id}${newItem.color.color}${newItem.size.size}`
             const carts = JSON.parse(localStorage.getItem("carts")) || []
             if(carts.length > 0) {
                 let index = 0;
                 const newCarts = carts.map(item => {
-                    if(item.id === newItem.id) {
+                    if(item.id === newItem.id && item.color._id === newItem.color._id && item.size._id === newItem.size._id) {
                         item.quantity += newItem.quantity
                         index += 1
                     }
@@ -56,6 +58,9 @@ const detail = createSlice({
             const carts = JSON.parse(localStorage.getItem("carts"))
             const newCarts = carts.filter(item => item.id !== action.payload)
             localStorage.setItem("carts", JSON.stringify(newCarts))
+        },
+        reloadCart: (state, action) => {
+            state.cartsState = !state.cartsState
         }
     }
 })

@@ -7,7 +7,6 @@ import Comment from "./Comment";
 const cx = classNames.bind(styles);
 
 function ReviewBox({ item }) {
-    console.log(item._id)
     const [boxShow, setBoxShow] = useState("rate");
 
     return (

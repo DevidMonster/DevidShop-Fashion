@@ -15,6 +15,29 @@
         display: flex;
         gap: 60px;  
         align-items: center;
-
+        flex-wrap: wrap;
     }
+}
+
+
+@media (max-width: 991px) {
+    .hp_wrapper {
+        .show {
+            gap: 30px;
+        }
+    }
+}
+/* tablet desktop: 768px */
+/* mobile */
+@media (max-width: 886px) {
+    .hp_wrapper {
+        .show {
+            gap: 50px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+
+
 }

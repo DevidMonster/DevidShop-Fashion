@@ -9,23 +9,23 @@
     --app-background-color: white;
     --font-family: 'Roboto', sans-serif;
     --bg-content-color: rgba(0, 0, 0, 0.171);
-    --border-box: rgba(0,0,0,0.2);
+    --border-box: rgba(0, 0, 0, 0.2);
     --border-primary: rgb(0 0 0 / 12%);
     --link-text-hover: #9c32ca;
-    --modal-scrollbar: rgba(12,3,3,0.8);
+    --modal-scrollbar: rgba(12, 3, 3, 0.8);
     --player-bg: #fff;
     --purple-primary: #6b3483;
     --primary-bg: #fff;
     --sidebar-popup-bg: #f2f2f2;
     --text-color: #32323d;
     --text-item-hover: #a0a0a0;
-    --text-secondary: rgba(0,0,0,0.6);
+    --text-secondary: rgba(0, 0, 0, 0.6);
     --navigation-text: #32323d;
     --placeholder-text: #757575;
     --bg-popper: #fff;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -78,7 +78,8 @@ html *::-webkit-scrollbar-track {
     background-color: rgba(0, 0, 0, 0);
 }
 
-input, button {
+input,
+button {
     border: none;
     outline: none;
 }
@@ -91,8 +92,8 @@ input, button {
     --border-box: rgb(255 255 255 / 20%);
     --border-primary: rgb(255 255 255 / 10%);
     --link-text-hover: #c662ef;
-    --modal-scrollbar: rgba(12,3,3,0.8);
-    --player-bg: rgba(0,0,0,0.2);
+    --modal-scrollbar: rgba(12, 3, 3, 0.8);
+    --player-bg: rgba(0, 0, 0, 0.2);
     --purple-primary: #7200a1;
     --primary-bg: #282828;
     --sidebar-popup-bg: #292929;
@@ -104,17 +105,7 @@ input, button {
     --bg-popper: rgb(37, 37, 37);
 }
 
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
 
 .app {
     background-color: var(--app-background-color);
@@ -130,10 +121,21 @@ input[type=number] {
     right: 20px;
     transform: translateX(200%);
     transition: all 0.3s ease-in-out;
-    
+
     &.scrollShow {
         transform: unset;
     }
 }
 
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}

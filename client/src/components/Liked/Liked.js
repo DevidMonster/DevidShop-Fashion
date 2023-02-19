@@ -1,4 +1,4 @@
-import styles from './ItemBox.module.scss';
+import styles from './Liked.module.scss';
 import classNames from 'classnames/bind';
 
 import { useEffect, useState, memo } from "react";
@@ -20,7 +20,7 @@ function Liked({ productId, className }) {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        if(likes[0] == "") {
+        if(likes[0] === "") {
             setLikeCount(0)
         } else {
             setLikeCount(likes.length)
@@ -28,7 +28,9 @@ function Liked({ productId, className }) {
     }, [likes])
 
     useEffect(() => {
-        fetchAPI()
+        if(!!productId) {
+            fetchAPI()
+        }
     }, [user])
 
     const fetchAPI = async () => {

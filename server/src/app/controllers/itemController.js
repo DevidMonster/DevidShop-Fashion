@@ -17,7 +17,6 @@ const getItem = async (req, res) => {
                 item = await Product.find({})
             }
         }
-        console.log(item)
         res.status(200).json(item)
     } catch(err) {
         res.status(404).json({message: err.message})
@@ -26,13 +25,13 @@ const getItem = async (req, res) => {
 
 const getItemByCategory = async (req, res) => {
     try {
-        const { id, search } = req.query
-        const item = await Product.find({cate_id: id,
+        const { search } = req.query
+        const string = search || ""
+        const item = await Product.find({cate_id: req.query.id,
             $or: [
-                { name: { $regex: search, $options: 'i' } },
+                { name: { $regex: string, $options: 'i' } },
             ]
         })
-        console.log(item)
         res.status(200).json(item)
     } catch(err) {
         res.status(404).json({message: err.message})
@@ -43,7 +42,6 @@ const getItemById = async (req, res) => {
     try {
         const { id } = req.params
         const item = await Product.findById({_id: id})
-        console.log(item)
         res.status(200).json(item)
     } catch(err) {
         res.status(404).json({message: err.message})
@@ -53,7 +51,6 @@ const getItemById = async (req, res) => {
 const addUserLiked = async (req, res) => {
     try {
         const { id, likes } = req.body
-        console.log(likes)
         const item = await Product.updateOne({ _id: id }, { $set: { liked: likes } })
         res.status(200).json(item)
     } catch(err) {

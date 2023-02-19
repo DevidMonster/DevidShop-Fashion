@@ -7,6 +7,7 @@ import Product from "../pages/Product";
 import Detail from "../pages/Detail";
 import NoSideBar from "../layouts/NoSideBar";
 import Favorite from "../pages/Favorite";
+import Cart from "../pages/Cart";
 
 
 const publicRoutes = [
@@ -15,6 +16,7 @@ const publicRoutes = [
     { path: config.routes.detail, component: Detail, layout: NoSideBar },
     { path: config.routes.about, component: Product },
     { path: config.routes.sale, component: Product },
+    { path: config.routes.cart, component: Cart, layout: NoSideBar },
     { path: config.routes.blog, component: Product },
     { path: config.routes.contact, component: Product },
     { path: config.routes.favorite, component: Favorite },
