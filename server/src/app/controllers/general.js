@@ -24,20 +24,20 @@ const getUserById = async (req, res) => {
 
 const userLogin = async (req, res) => {
     try {
-        const { userName, passWord } = req.body
-        console.log(userName, passWord)
+        const { userName, password } = req.body
+        console.log(userName, password)
         const user = await User.findOne({ 
             $or : [ 
                 {
                     $and: [
                         {email: userName},
-                        {password: passWord}
+                        {password: password}
                     ]
                 }, 
                 {
                     $and: [
                         {phoneNumber: userName},
-                        {password: passWord}
+                        {password: password}
                     ]
                 }
             ]
@@ -49,4 +49,24 @@ const userLogin = async (req, res) => {
     }
 }
 
-module.exports = { getUser, getUserById, userLogin }
+const userRegister = async (req,res) => {
+    try {
+        console.log(req.body)
+        const user = new User(req.body)
+        await user.save()
+        res.status(200).json(user)
+    } catch (err) {
+        res.status(404).json({message: err.message})
+    }
+}
+
+const removeUser = async (req, res) => {
+    try {
+        await User.deleteOne({ _id: req.params.id})
+        res.status(200).send("Remove Success!!")
+    } catch (err) {
+        res.status(404).json({message: err.message})
+    }
+}
+
+module.exports = { getUser, getUserById, userLogin, userRegister, removeUser }

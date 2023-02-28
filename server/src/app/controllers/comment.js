@@ -11,11 +11,11 @@ const getComment = async (req, res) => {
     }
 }
 
-const createComment = (req, res) => {
+const createComment = async (req, res) => {
     try {
         console.log(req.body)
         const comment = new Comment(req.body)
-        comment.save()
+        await comment.save()
         res.status(200).send("Comment Complete!!")
     } catch(err) {
         res.status(404).json({message: err.message})

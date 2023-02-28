@@ -4,9 +4,11 @@ import Button from '../Button/Button';
 import * as request from '../../utils/httpRequest';
 import { AiOutlineEye, AiOutlineEyeInvisible } from '../../asset/icons';
 import reducers from '../../redux/reducer';
+import * as yup from 'yup'
 
 import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
+
 
 
 const cx = classNames.bind(styles)
@@ -20,36 +22,49 @@ function Login() {
     const [errorMessage, setErrorMessage] = useState({})
     const [loading, setLoading] = useState(false)
     
+    const loginSchema = yup.object().shape({
+        userName: loginType === `email` ? yup.string().email().required() : yup.string().matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, {message: "Please enter valid number.", excludeEmptyString: false}).required(), 
+        password: yup.string()
+        .min(8, 'passWord at least 8 chars')
+        .matches(/[a-z]/, 'passWord at least one lowercase char')
+        .matches(/[A-Z]/, 'passWord at least one uppercase char')
+        .matches(/[a-zA-Z]+[^a-zA-Z\s]+/, 'passWord at least 1 number or special char (@,!,#, etc).').required(),
+    })
+
     const dispatch = useDispatch()
 
     const inputPass = useRef()
 
-    const validateAll = () => {
+    const validateAll = async (formUpload) => {
         const msg = {}
 
-        if (loginType === "email" && email === "") {
-            msg.email = "Please enter your Email"
-        }
+        await loginSchema.validate(formUpload, {abortEarly: false})
+            .then(() => {
+                setErrorMessage({})
+            })
+            .catch(({errors}) => {
+                console.log(errors);
+                msg.userName = ''
+                msg.pass = ``
+                errors.foreach(err => {
+                    if(!err.toLowerCase().startsWith('password')) {
+                        msg.userName = err
+                    }
 
-        if (loginType === "phone" && phoneNumber === "") {
-            msg.phone = "Please enter your PhoneNumber"
-        }
-
-        if (passWord === "") {
-            msg.pass = "Please enter your Pass"
-        }
-
-        setErrorMessage(msg)
-        if (Object.keys(msg).length > 0) return false
-        return true
+                    if(err.toLowerCase().startsWith('password')) {
+                        msg.pass = err
+                    }
+                })
+                setErrorMessage(msg)
+            })
+        return Object.keys(msg).length > 0 ? false : true
     }
 
     
-    const login = async () => {
+    const login = async (formUpload) => {
         setLoading(true)
         const checkUser = await request.post("/general/user/login", {
-            userName: loginType === "email" ? email : phoneNumber,
-            passWord: passWord
+            ...formUpload
         })
         if(checkUser) {
             dispatch(reducers.actions.notification({ content: "Login Success", type: "success" }))
@@ -57,21 +72,24 @@ function Login() {
             dispatch(reducers.actions.toggleModel(false))
         } else {
             setErrorMessage({ 
-                email: "email or passWord not match!!",
-                phone: "phoneNumber or passWord not match!!"
+                userName: "userName or passWord not match!!",
             })
         }
         setLoading(false)
         
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-
-        const isValid = validateAll()
+        const formUpload = {
+            userName: loginType === "email" ? email : phoneNumber,
+            password: passWord
+        }
+        console.log(formUpload)
+        const isValid = await validateAll(formUpload)
         if (!isValid) return false
 
-        login()
+        login(formUpload)
         
     }
 
@@ -90,9 +108,9 @@ function Login() {
                         <div className={cx('input_box')}>
                             <label htmlFor="email">Email:</label>
                             <div className={cx('input_setup')}>
-                                <input type="email" id="email" autoComplete='email' value={email} onChange={e => setEmail(e.target.value)} placeholder="your-email@gmail.com" />
+                                <input  id="email" autoComplete='email' value={email} onChange={e => setEmail(e.target.value)} placeholder="your-email@gmail.com" />
                             </div>
-                            <p>{errorMessage.email}</p>
+                            <p>{errorMessage.userName}</p>
                         </div>
                     )
                         :
@@ -103,7 +121,7 @@ function Login() {
                                 <span>(+84)</span>
                                 <input id="phone" type={"tel"} value={phoneNumber} onChange={e => setPhoneNumber(e.target.value)} placeholder="Enter your Phone Number" />
                             </div>
-                            <p>{errorMessage.phone}</p>
+                            <p>{errorMessage.userName}</p>
                         </div>
                     )
                 }

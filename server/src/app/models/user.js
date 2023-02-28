@@ -19,13 +19,31 @@ const UserSchema = new mongoose.Schema(
       required: true,
       min: 5,
     },
-    city: String,
-    state: String,
-    country: String,
-    occupation: String,
-    phoneNumber: String,
+    city: {
+      type: String,
+      default: null
+    },
+    state:  {
+      type: String,
+      default: null
+    },
+    country:  {
+      type: String,
+      default: null
+    },
+    occupation:  {
+      type: String,
+      default: null
+    },
+    phoneNumber:  {
+      type: String,
+      required: true
+    },
     transactions: Array,
-    avatar: String,
+    avatar:  {
+      type: String,
+      default: null
+    },
     role: {
       type: String,
       enum: ["user", "admin", "superadmin"],

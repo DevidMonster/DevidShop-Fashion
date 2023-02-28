@@ -2,8 +2,12 @@ import styles from './ActionModal.module.scss';
 import classNames from 'classnames/bind';
 import Button from '../Button/Button';
 import { AiOutlineEye, AiOutlineEyeInvisible } from '../../asset/icons';
+import * as yup from 'yup'
+import * as request from '../../utils/httpRequest';
 
 import { useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import reducers from '../../redux/reducer';
 
 const cx = classNames.bind(styles)
 
@@ -14,38 +18,91 @@ function Register() {
     const [passWord, setPassWord] = useState("")
     const [showPass, setShowPass] = useState(false)
     const [errorMessage, setErrorMessage] = useState({})
+    const [loading, setLoading] = useState(false)
+
+    
+    const dispatch = useDispatch()
 
     const inputPass = useRef()
 
-    const validateAll = () => {
+    const signupSchema = yup.object().shape({
+        name: yup.string().min(3).required(),
+        email: yup.string().email().required(), 
+        phoneNumber:  yup.string().matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, {message: "phoneNumber is not valid number.", excludeEmptyString: false}).required(),
+        password: yup.string()
+        .min(8, 'passWord at least 8 chars')
+        .matches(/[a-z]/, 'passWord at least one lowercase char')
+        .matches(/[A-Z]/, 'passWord at least one uppercase char')
+        .matches(/[a-zA-Z]+[^a-zA-Z\s]+/, 'passWord at least 1 number or special char (@,!,#, etc).').required(),
+    })
+
+    const validateAll = async (formUpload) => {
         const msg = {}
-        if (userName === "") {
-            msg.name = "Please enter your Name"
-        }
 
-        if (email === "") {
-            msg.email = "Please enter your Email"
-        }
+        await signupSchema.validate(formUpload, {abortEarly: false})
+            .then(() => {
+                setErrorMessage({})
+            })
+            .catch(({errors}) => {
+                console.log(errors);
+                msg.name = ''
+                msg.email = ''
+                msg.phone = ''
+                msg.pass = ``
+                errors.foreach(err => {
+                    if(err.startsWith('name')) {
+                        msg.name = err
+                    }
 
-        if (phoneNumber === "") {
-            msg.phone = "Please enter your PhoneNumber"
-        }
+                    if(err.startsWith('email')) {
+                        msg.email = err
+                    }
 
-        if (passWord === "") {
-            msg.pass = "Please enter your Pass"
-        }
+                    if(err.startsWith('phoneNumber')) {
+                        msg.phone = err
+                    }
 
-        setErrorMessage(msg)
-        if (Object.keys(msg).length > 0) return false
-        return true
+                    if(err.startsWith('password')) {
+                        msg.pass = err
+                    }
+                })
+                setErrorMessage(msg)
+            })
+        return Object.keys(msg).length > 0 ? false : true
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const isValid = validateAll()
+        const formUpload = {
+            name: userName,
+            email,
+            phoneNumber,
+            password: passWord
+        }
+
+        const isValid = await validateAll(formUpload)
         if (!isValid) return
+
+        signup(formUpload)
     }
+
+    const signup = async (account) => {
+        setLoading(true)
+        const user = await request.post("/general/user/signup", {
+            ...account
+        })
+        if(user) {
+            dispatch(reducers.actions.notification({ content: "Signup Success", type: "success" }))
+            dispatch(reducers.actions.currentUser(user))
+            dispatch(reducers.actions.toggleModel(false))
+        } else {
+            setErrorMessage({ 
+                userName: "create Account fail",
+            })
+        }
+        setLoading(false)
+    } 
 
     const handleShowPass = () => {
         setShowPass(prev => !prev)
@@ -93,7 +150,17 @@ function Register() {
                     <p>{errorMessage.pass}</p>
                 </div>
                 <div className={cx('btn_submit')}>
-                    <Button type={"submit"} fullWidth>Sign Up</Button>
+                <Button type={"submit"} fullWidth>
+                        {loading ? 
+                            <p className={cx('loader')}>
+                                <span className={cx("dot-1")}></span>
+                                <span className={cx("dot-2")}></span>
+                                <span className={cx("dot-3")}></span>
+                            </p>
+                                :
+                            "Sign Up"
+                        }
+                    </Button>
                 </div>
             </form>
         </div>
