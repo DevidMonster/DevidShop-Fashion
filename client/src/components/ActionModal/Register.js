@@ -49,7 +49,7 @@ function Register() {
                 msg.email = ''
                 msg.phone = ''
                 msg.pass = ``
-                errors.foreach(err => {
+                errors.map(err => {
                     if(err.startsWith('name')) {
                         msg.name = err
                     }

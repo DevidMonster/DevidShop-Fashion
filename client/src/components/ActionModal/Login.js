@@ -46,7 +46,7 @@ function Login() {
                 console.log(errors);
                 msg.userName = ''
                 msg.pass = ``
-                errors.foreach(err => {
+                errors.map(err => {
                     if(!err.toLowerCase().startsWith('password')) {
                         msg.userName = err
                     }
