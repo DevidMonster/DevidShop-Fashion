@@ -29,6 +29,12 @@ export const colorSelector = (state) => state.detailReducer.color
 export const sizeSelector = (state) => state.detailReducer.size
 
 export const cartsStateSelector = (state) => state.detailReducer.cartsState
+
+export const subTotalSelector = (state) => state.cartReducer.subTotal
+
+export const shippingSelector = (state) => state.cartReducer.shipping
+
+export const paymentMethodSelector = (state) => state.cartReducer.paymentMethod
 // export const reducerSelector = createSelector(
 //     screenModeSelector,
 //     toggleSideBarSelector, 

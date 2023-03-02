@@ -8,11 +8,13 @@ import Detail from "../pages/Detail";
 import NoSideBar from "../layouts/NoSideBar";
 import Favorite from "../pages/Favorite";
 import Cart from "../pages/Cart";
+import Account from "../pages/Account";
 
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },
     { path: config.routes.product, component: Product },
+    { path: config.routes.account, component: Account },
     { path: config.routes.detail, component: Detail, layout: NoSideBar },
     { path: config.routes.about, component: Product },
     { path: config.routes.sale, component: Product },

@@ -47,3 +47,39 @@
     text-align: center;
     margin: 200px 0;
 }
+
+.cart_action {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.promoCode_box {
+    width: 30%;
+    label {
+        font-size: 1.2rem;
+    }
+    input {
+        margin: 10px 0;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid var(--bg-content-color);
+        background: transparent;
+        color: var(--text-color);
+    }
+}
+
+
+@media (max-width: 868px) {
+    .promoCode_box {
+        width: 35%;
+    }
+}
+
+@media (max-width: 660px) {
+    .promoCode_box {
+        width: 80%;
+    }
+}
+
+

@@ -1,0 +1,67 @@
+.wrapper {
+    width: 35%;
+    padding: 20px;
+    border: 1px solid var(--bg-content-color);
+    margin: 10px;
+
+    input[type="text"],input[type="tel"] {
+        width: 100%;
+        border: 1px solid var(--text-color);
+        background: transparent;
+        padding: 10px;
+        border-radius: 10px;
+        color: var(--text-color);
+    }
+
+    label {
+        display: block;
+        margin: 10px 0;
+        font-size: 1.2rem;
+        color: var(--text-color);
+    }
+
+    .form_head {
+        display: flex;
+        gap: 5px;
+
+        div {
+            flex: 1;
+        }
+    }
+
+    .payment_type {
+        span {
+            margin: 0 10px 0 5px;
+            font-size: 1.2rem;
+        }
+    }
+
+    table {
+        margin: 10px 0;
+        padding-top: 10px;
+        border-top: 1px solid var(--bg-content-color);
+        font-size: 1.5rem;
+        width: 100%;
+        
+        th {
+            text-align: left;
+        }
+
+        td {
+            text-align: right;
+        }
+    }
+}
+
+
+@media (max-width: 868px) {
+    .wrapper {
+        width: 45%;
+    }
+}
+
+@media (max-width: 660px) {
+    .wrapper {
+        width: 80%;
+    }
+}

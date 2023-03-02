@@ -69,4 +69,14 @@ const removeUser = async (req, res) => {
     }
 }
 
-module.exports = { getUser, getUserById, userLogin, userRegister, removeUser }
+const updateImage = async (req, res) => {
+    try {
+        await User.updateOne({_id: req.body.id}, {avatar: req.body.avatar})
+        const user = await User.findOne({_id: req.body.id})
+        res.status(200).json(user)
+    } catch (err) {
+        res.status(404).json({message: err.message})
+    }
+}
+
+module.exports = { getUser, getUserById, userLogin, userRegister, removeUser, updateImage }

@@ -19,15 +19,11 @@ const UserSchema = new mongoose.Schema(
       required: true,
       min: 5,
     },
-    city: {
+    address: {
       type: String,
       default: null
     },
     state:  {
-      type: String,
-      default: null
-    },
-    country:  {
       type: String,
       default: null
     },

@@ -7,11 +7,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import reducers from './reducer';
 import detail from './detail';
+import cart from './cart';
 
 const store = configureStore({
     reducer: {
         mainReducer: reducers.reducer,
-        detailReducer: detail.reducer
+        detailReducer: detail.reducer,
+        cartReducer: cart.reducer
     },
 })
 export default store;
