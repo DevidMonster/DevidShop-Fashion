@@ -13,7 +13,9 @@ function About() {
 
     useEffect(() => {
         const fetchApi = async () => {
+            setLoading(true)
             const res = await request.get('/profile/about')
+            setLoading(false)
             setData(res)
         }
         fetchApi()
