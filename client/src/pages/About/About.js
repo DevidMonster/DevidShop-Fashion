@@ -13,7 +13,7 @@ function About() {
 
     useEffect(() => {
         const fetchApi = async () => {
-            const res = await request.get('http://localhost:8000/profile/about')
+            const res = await request.get('/profile/about')
             setData(res)
         }
         fetchApi()
