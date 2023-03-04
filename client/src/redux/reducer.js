@@ -53,10 +53,7 @@ const reducers = createSlice({
         prevUrl: "/",
         toggle_mode: true,
         data: JSON.parse(localStorage.getItem("searchHistory")) || [],
-        cateSelected: {
-            _id: "lord",
-            name: "All"
-        },
+        cateSelected: "All",
         filter: {
             id: 1,
             value: "default",
