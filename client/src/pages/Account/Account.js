@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { userSelector } from '../../redux/selectors';
 
 import Avatar from './Avatar/Avatar';
+import Profile from './Profile';
+import { useScroll } from '../../hooks';
 
 const cx = classNames.bind(styles)
 
@@ -16,6 +18,7 @@ function Account() {
 
     const dispatch = useDispatch()
 
+    useEffect(useScroll,[getUser])
 
     useEffect(() => {
         setUser(getUser || {})
@@ -24,6 +27,7 @@ function Account() {
     return (  
         <div className={cx('wrapper')}>
             <Avatar user={user}/>
+            <Profile user={user}/>
         </div>
     );
 }

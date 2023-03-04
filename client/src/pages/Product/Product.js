@@ -11,13 +11,13 @@ import { useState, useEffect, memo } from 'react';
 import CategoryHeader from './CategoryHeader';
 import Loading from '../../components/Loading';
 import Filter from './Filter';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { MdOutlineCancel } from 'react-icons/md';
 
 const cx = classNames.bind(styles)
 
 function Product() {
-    const cate = useSelector(setCateGorySelected)
+    const { cate } = useParams()
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -27,13 +27,13 @@ function Product() {
     let currentSearch = search.get('search') || ''
 
     const handleDelete = () => {
-        navigate('/product')
+        navigate(`/product/${cate}`)
     }
 
-
+    console.log(cate)
     const fetchAPI= async () => {
         setLoading(true)  
-        if(cate.name === "All") {
+        if(!cate || cate === "All") {
             const dataResult = await request.get("/item", {
                 params: {
                     search: currentSearch
@@ -43,12 +43,13 @@ function Product() {
         } else {
             const dataResult = await request.get("/item/cate", {
                 params: {
-                    id: cate._id,
+                    cate,
                     search: currentSearch
                 }
             })
             setData(dataResult)
         }
+        dispatch(reducers.actions.changeCate(cate || "All"))
         setLoading(false)
     }
 

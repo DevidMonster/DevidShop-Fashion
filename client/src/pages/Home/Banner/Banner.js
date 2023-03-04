@@ -104,19 +104,19 @@ function Banner() {
                         <div className={cx('banner')} style={{ background: banner.background }}>
                             <div className={cx('Slideshow_left')}>
                                 <h2 className={cx('Slideshow_heading')}>
-                                    <a rel="noreferrer noopener noreferrer" target="_blank" href="#">
+                                    <a rel="noreferrer noopener noreferrer" target="_blank" href={banner.navLink}>
                                         {banner.title}
                                     </a>
                                 </h2>
                                 <p className={cx('Slideshow_desc')}>{banner.subTitle}</p>
                                 <div>
-                                    <a rel="noreferrer noopener noreferrer" className={cx('Slideshow_ctaBtn')} target="_blank" onMouseOut={e => e.target.style.color = 'white'} onMouseOver={e => e.target.style.color = banner.color} href="#">
+                                    <a rel="noreferrer noopener noreferrer" className={cx('Slideshow_ctaBtn')} target="_blank" onMouseOut={e => e.target.style.color = 'white'} onMouseOver={e => e.target.style.color = banner.color} href={banner.navLink}>
                                         {banner.btnText}
                                     </a>
                                 </div>
                             </div>
                             <div className={cx('Slideshow_right')}>
-                                <a rel="noreferrer noopener noreferrer" target="_blank" href="#" >
+                                <a rel="noreferrer noopener noreferrer" target="_blank" href={banner.navLink} >
                                     <img className={cx('Slideshow_img')} src={banner.image} alt={banner.title}/>
                                 </a>
                             </div>

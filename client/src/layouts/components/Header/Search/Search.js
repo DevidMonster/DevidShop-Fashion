@@ -14,11 +14,13 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import SearchHistory from './SearchHistory';
+import { setCateGorySelected } from '../../../../redux/selectors';
 
 const cx = classNames.bind(styles)
 
 function Search({ className }) {
     let state = useSelector(state => state.mainReducer) || false
+    const cate = useSelector(setCateGorySelected)
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(false);
@@ -81,7 +83,7 @@ function Search({ className }) {
             }
             setSearchValue("")
             setShowResult(false)
-            navigate(`/product?search=${searchValue}`)
+            navigate(`/product/${cate}?search=${searchValue}`)
 
         }
     }

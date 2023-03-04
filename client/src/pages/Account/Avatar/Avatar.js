@@ -36,6 +36,7 @@ function Avatar({ user }) {
             avatar: newAvatar
         })
         setLoading(false)
+        dispatch(reducers.actions.notification({ content: 'Change Avatar Success', type: 'success' }))
         dispatch(reducers.actions.currentUser(res))
         setShow(false)
         setNewAvatar("")
@@ -61,13 +62,15 @@ function Avatar({ user }) {
                                 <label htmlFor="file">Choose a file</label>
                             </div>
                             <div className={cx('showImage')}>
-                                {newAvatar !== "" && (
+                                {
                                     loading ? (
                                         <Loading />
                                     ) : (
-                                        <img src={newAvatar} />
+                                        newAvatar !== "" && (
+                                            <img src={newAvatar} />
+                                        )
                                     )
-                                )}
+                                }
                             </div>
                         </div>
                         <div className={cx('bot')}>

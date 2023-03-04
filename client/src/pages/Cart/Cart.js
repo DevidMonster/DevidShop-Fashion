@@ -112,7 +112,9 @@ function Cart() {
                     <input type="text" placeholder='Enter your code'/>
                     <Button>Apply</Button>
                 </div>
-                <OrderForm subTotal={subTotal}/>
+                {data.length > 0 && (
+                    <OrderForm subTotal={subTotal}/>
+                )}
             </div>
         </div>
     );

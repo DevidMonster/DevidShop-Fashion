@@ -3,12 +3,14 @@ import styles from './ShowHistory.module.scss';
 import { Link } from 'react-router-dom';
 import { BiTimeFive, MdOutlineCancel } from '../../asset/icons';
 // import { deleteSearch } from '../../redux/actions';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import reducers from '../../redux/reducer';
+import { setCateGorySelected } from '../../redux/selectors';
 
 const cx = classNames.bind(styles);
 
 function ShowHistory({ index , data }) {
+    const cate = useSelector(setCateGorySelected)
     const dispatch = useDispatch()
 
     const handleDelete = () => {
@@ -17,7 +19,7 @@ function ShowHistory({ index , data }) {
 
     return (
         <div className={cx('wrapper')}>
-            <Link to={`/product?search=${data}`} className={cx('search-box')}>
+            <Link to={`/product/${cate}?search=${data}`} className={cx('search-box')}>
                 <span className={cx('icon')}>
                     <BiTimeFive/>
                 </span>

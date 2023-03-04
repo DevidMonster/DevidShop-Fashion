@@ -79,4 +79,17 @@ const updateImage = async (req, res) => {
     }
 }
 
-module.exports = { getUser, getUserById, userLogin, userRegister, removeUser, updateImage }
+const updateProfile = async (req,res) => {
+    try {
+        await User.updateMany({_id: req.body.id}, {name: req.body.name, 
+            email: req.body.email, 
+            phoneNumber: req.body.phoneNumber, 
+            address: req.body.address})
+        const user = await User.findOne({_id: req.body.id})
+        res.status(200).json(user)
+    } catch (err) {
+        res.status(404).json({message: err.message})
+    }
+}
+
+module.exports = { getUser, getUserById, userLogin, userRegister, removeUser, updateImage, updateProfile}

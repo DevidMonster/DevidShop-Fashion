@@ -1,4 +1,5 @@
 const Product = require('../models/Item');
+const Category = require('../models/category');
 
 const getItem = async (req, res) => {
     try {
@@ -27,7 +28,8 @@ const getItemByCategory = async (req, res) => {
     try {
         const { search } = req.query
         const string = search || ""
-        const item = await Product.find({cate_id: req.query.id,
+        const category = await Category.findOne({ name:req.query.cate })
+        const item = await Product.find({cate_id: category._id,
             $or: [
                 { name: { $regex: string, $options: 'i' } },
             ]
