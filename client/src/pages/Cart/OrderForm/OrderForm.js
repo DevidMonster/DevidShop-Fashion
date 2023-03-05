@@ -5,6 +5,7 @@ import { paymentMethodSelector, shippingSelector, userSelector } from '../../../
 import { useEffect } from 'react';
 import cart from '../../../redux/cart';
 import Button from '../../../components/Button';
+import reducers from '../../../redux/reducer';
 
 const cx = className.bind(styles);
 
@@ -26,9 +27,15 @@ function OrderForm({ subTotal }) {
         dispatch(cart.actions.addAddress(user.address))
         dispatch(cart.actions.addTotal((subTotal + shipping)))
     }, [user])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        dispatch(reducers.actions.notification({ content: "In Progressing", type: "info" }))
+    }
+
     return (  
         <div className={cx("wrapper")}>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className={cx("form_head")}>
                     <div>
                         <label htmlFor='Name'>Customer Name</label>
@@ -71,7 +78,7 @@ function OrderForm({ subTotal }) {
                         </tbody>
                     </table>
                 </div>
-                <Button type={"button"} fullWidth>CheckOut Now</Button>
+                <Button fullWidth>CheckOut Now</Button>
             </form>
         </div>
     );

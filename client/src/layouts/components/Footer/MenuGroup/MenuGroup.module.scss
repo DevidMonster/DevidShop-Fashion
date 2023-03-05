@@ -1,0 +1,29 @@
+.wrapper {
+    width: 20%;
+    h1 {
+        color: var(--text-color);
+        display: block;
+        padding: 5px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid var(--text-color);
+    }
+
+    ul {
+        list-style: inside;
+
+        li {
+            margin-bottom: 10px;
+
+            a {
+                font-size: 1.5rem;
+                color: var(--text-color);
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;;
+                }
+            }
+        }
+
+    }
+}

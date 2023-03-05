@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import Button from '../../components/Button';
 import { cartsStateSelector, subTotalSelector } from '../../redux/selectors';
 import { useDispatch, useSelector } from 'react-redux';
+import { useScroll } from '../../hooks';
 import detail from '../../redux/detail';
 import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
 import { TbTrashX } from 'react-icons/tb';
@@ -33,6 +34,7 @@ function Cart() {
         setData(JSON.parse(localStorage.getItem('carts')) || [])
     }, [reload])
 
+    useEffect(useScroll, [reload])
 
     const handleChangeQuantity = (index, currentQuantity, act) => {
         const newData = [...data]
@@ -106,16 +108,16 @@ function Cart() {
                     </table>
                 )}
             </div>
-            <div className={cx('cart_action')}>
-                <div className={cx("promoCode_box")}>
-                    <label>Promotion Code</label>
-                    <input type="text" placeholder='Enter your code'/>
-                    <Button>Apply</Button>
-                </div>
                 {data.length > 0 && (
-                    <OrderForm subTotal={subTotal}/>
+                    <div className={cx('cart_action')}>
+                        <div className={cx("promoCode_box")}>
+                            <label>Promotion Code</label>
+                            <input type="text" placeholder='Enter your code'/>
+                            <Button>Apply</Button>
+                        </div>
+                        <OrderForm subTotal={subTotal}/>
+                    </div>
                 )}
-            </div>
         </div>
     );
 }

@@ -8,6 +8,7 @@ import reducer from '../../../redux/reducer';
 import Button from '../../../components/Button';
 import * as request from '../../../utils/httpRequest.js';
 import Loading from '../../../components/Loading';
+import * as yup from 'yup'
 
 const cx = className.bind(styles);
 
@@ -22,11 +23,22 @@ function Profile({ user }) {
 
     const dispatch = useDispatch()
 
+    
+    const accountSchema = yup.object().shape({
+        id: yup.string().required(),
+        name: yup.string().min(3).required(),
+        email: yup.string().email().required(), 
+        phoneNumber:  yup.string().matches(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/, {message: "phoneNumber is not valid number.", excludeEmptyString: false}).required(),
+        address: yup.string().default(null)
+    })
+
     useEffect(() => {
         setUserName(user.name)
         setEmail(user.email)
         setPhoneNumber(user.phoneNumber)
-        setAddress(user.address)
+        setAddress(user.address || "")
+
+        return setErr({})
     }, [editing])
 
     const saveProfile = async () => {
@@ -38,13 +50,39 @@ function Profile({ user }) {
             address: address
         }
         setLoading(true)
-        const newUser = await request.put('/general/user/profile', {
-            ...profile
+        await accountSchema.validate(profile, { abortEarly: false}).then(async () => {
+                
+            const newUser = await request.put('/general/user/profile', {
+                ...profile
+            })
+            setErr({})        
+            setLoading(false)
+            setEditing(false)
+            dispatch(reducer.actions.notification({ content: 'Update Profile Success', type: 'success' }))
+            dispatch(reducer.actions.currentUser(newUser))
+        }).catch(({errors}) => {
+            const msg = {}
+            errors.forEach(error => {
+                if(error.startsWith("name")) {
+                    msg.name = error
+                }
+
+                if(error.startsWith("email")) {
+                    msg.email = error
+                }
+
+                if(error.startsWith("phoneNumber")) {
+                    msg.phone = error
+                }
+
+                if(error.startsWith("address")) {
+                    msg.address = error
+                }
+
+            })
+            setErr(msg)
+            setLoading(false)
         })
-        setLoading(false)
-        setEditing(false)
-        dispatch(reducer.actions.notification({ content: 'Update Profile Success', type: 'success' }))
-        dispatch(reducer.actions.currentUser(newUser))
     }
 
     return (  

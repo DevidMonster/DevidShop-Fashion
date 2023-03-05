@@ -77,7 +77,7 @@ const itemRoutes = require('./routes/Item');
 const bannerRoutes = require('./routes/banner');
 const commentRoutes = require('./routes/comment');
 const profileRoutes = require('./routes/profile');
-const About = require('./app/models/about');
+const contactRoutes = require('./routes/contact');
 
 app.use('/general', generalRoutes);
 app.use('/category', categoryRoutes);
@@ -85,6 +85,7 @@ app.use('/item', itemRoutes);
 app.use('/banner', bannerRoutes);
 app.use('/comment', commentRoutes);
 app.use('/profile', profileRoutes);
+app.use('/contact', contactRoutes); 
 
 //connect database
 mongoose.connect(process.env.MONGO_URL , {

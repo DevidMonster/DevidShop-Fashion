@@ -7,6 +7,7 @@ import { BsYoutube, BsFacebook } from 'react-icons/bs'
 import { FaTiktok } from 'react-icons/fa'
 
 import { useSelector } from "react-redux";
+import MenuGroup from './MenuGroup/MenuGroup';
 
 const cx = classNames.bind(styles)
 
@@ -26,6 +27,10 @@ function Footer() {
                 <p className={cx("contact-list")}>
                     Phone number: <a href='tel:0396.626.650'>0396265650</a><br/>Email: <a href='mailto: mrabt905@gmail.com'>mrbat905@gmail.com</a><br/>Address: Nhà số 46, Phố Hàng Bồ, Quận Hoàn Kiếm, Thành Phố Hà Nội
                 </p>
+            </div>
+            <div className={cx('ft_session')}>
+                <MenuGroup title={"Info"} list={[{ title: "What's new", href: "" }, { title: "Term of Use", href: "" }, { title: "Privacy Statement", href: "" }, { title: "Our USP", href: "" }]}/>
+                <MenuGroup type='to' title={"Navigate"} list={[{ title: "Home", href: "/" }, { title: "Product", href: "/product" }, { title: "Favorite", href: "/favorite" }, { title: "Contact Us", href: "/contact" }, { title: "About Us", href: "/about" }]}/>
             </div>
         </div>
         <div className={cx("bottom")}>

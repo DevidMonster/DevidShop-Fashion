@@ -4,6 +4,7 @@ import Article from '../../components/Article/Article';
 import * as request from '../../utils/httpRequest';
 import Loading from '../../components/Loading';
 import { useState, useEffect } from 'react'
+import { useScroll } from '../../hooks';
 
 const cx = classNames.bind(styles)
 
@@ -20,6 +21,9 @@ function About() {
         }
         fetchApi()
     }, [])
+
+    useEffect(useScroll, [])
+
     return (  
         <div className={cx('wrapper')}>
             {loading ? (

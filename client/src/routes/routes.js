@@ -10,6 +10,9 @@ import Favorite from "../pages/Favorite";
 import Cart from "../pages/Cart";
 import Account from "../pages/Account";
 import About from "../pages/About/About";
+import Blog from "../pages/Blog";
+import Contact from "../pages/Contact";
+import Sale from "../pages/Sale";
 
 
 const publicRoutes = [
@@ -19,10 +22,10 @@ const publicRoutes = [
     { path: config.routes.account, component: Account },
     { path: config.routes.detail, component: Detail, layout: NoSideBar },
     { path: config.routes.about, component: About },
-    { path: config.routes.sale, component: Product },
+    { path: config.routes.sale, component: Sale },
     { path: config.routes.cart, component: Cart, layout: NoSideBar },
-    { path: config.routes.blog, component: Product },
-    { path: config.routes.contact, component: Product },
+    { path: config.routes.blog, component: Blog },
+    { path: config.routes.contact, component: Contact },
     { path: config.routes.favorite, component: Favorite },
 ];
 
