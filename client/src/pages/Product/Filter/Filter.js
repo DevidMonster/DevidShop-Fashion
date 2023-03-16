@@ -3,9 +3,8 @@ import classNames from 'classnames/bind';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilterSelected } from '../../../redux/selectors';
-import reducers from '../../../redux/reducer'; 
+import reducers from '../../../redux/reducer';
 import { RxDot, RxDotFilled } from 'react-icons/rx';
-import { useEffect } from 'react';
 
 const cx = classNames.bind(styles)
 
@@ -36,11 +35,11 @@ function Filter() {
                 {options.map(item => (
                     <label htmlFor={`filter${item.id}`} className={cx('box')} key={item.id}>
                         {item.id === selected.id ? (
-                            <RxDotFilled className={cx('fix')}/>
+                            <RxDotFilled className={cx('fix')} />
                         ) : (
-                            <RxDot className={cx('fix')}/>
+                            <RxDot className={cx('fix')} />
                         )}
-                        <input type={"radio"} id={`filter${item.id}`} value={item.value} checked={item.id === selected.id} onChange={() => handleSelected(item)}/>
+                        <input type={"radio"} id={`filter${item.id}`} value={item.value} checked={item.id === selected.id} onChange={() => handleSelected(item)} />
                         <span>{item.label}</span>
                     </label>
                 ))}

@@ -1,6 +1,7 @@
 .wrapper {
     color: var(--text-color);
     margin-top: 50px;
+
     h1 {
         font-size: 3rem;
         text-align: center;
@@ -9,6 +10,7 @@
 
     .container {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
         gap: 10px;
 
@@ -42,7 +44,7 @@
                 gap: 10px;
                 flex-wrap: wrap;
 
-                & > div {
+                &>div {
                     flex: 1;
                 }
             }
@@ -56,7 +58,7 @@
                 text-align: left;
                 font-size: 1.4rem;
             }
-        
+
             & input,
             & textarea {
                 background: #fff no-repeat;
@@ -69,7 +71,7 @@
                 width: 100%;
             }
 
-            input + span {
+            input+span {
                 display: block;
                 margin-bottom: 20px;
             }
@@ -78,5 +80,17 @@
                 margin-top: 10px;
             }
         }
+    }
+}
+
+@media (max-width: 660px) {
+    .contact_info {
+        flex: unset !important;
+        width: 100%;
+    }
+
+    form {
+        flex: unset !important;
+        width: 100%;
     }
 }

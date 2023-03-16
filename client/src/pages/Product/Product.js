@@ -2,10 +2,9 @@ import styles from './Product.module.scss';
 import classNames from 'classnames/bind';
 import PaginatedItems from '../../components/PaginatedItems';
 import * as request from '../../utils/httpRequest';
-import { setCateGorySelected } from '../../redux/selectors';
 import reducers from '../../redux/reducer';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useState, useEffect, memo } from 'react';
 
 import CategoryHeader from './CategoryHeader';
@@ -23,7 +22,7 @@ function Product() {
 
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
-    const [ search ] = useSearchParams()
+    const [search] = useSearchParams()
     let currentSearch = search.get('search') || ''
 
     const handleDelete = () => {
@@ -31,9 +30,9 @@ function Product() {
     }
 
     console.log(cate)
-    const fetchAPI= async () => {
-        setLoading(true)  
-        if(!cate || cate === "All") {
+    const fetchAPI = async () => {
+        setLoading(true)
+        if (!cate || cate === "All") {
             const dataResult = await request.get("/item", {
                 params: {
                     search: currentSearch
@@ -67,23 +66,23 @@ function Product() {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('header_scroll')}>
-                <CategoryHeader/>
+                <CategoryHeader />
             </div>
-            <Filter/>
+            <Filter />
             {currentSearch !== '' && (
                 <p className={cx('text_result')}>
-                    {data.length} Result for search key: "{currentSearch}" 
+                    {data.length} Result for search key: "{currentSearch}"
                     <span className={cx('icon')} onClick={() => handleDelete()}>
-                        <MdOutlineCancel/>
+                        <MdOutlineCancel />
                     </span>
                 </p>
             )}
             {loading ? (
                 <div className={cx('pending')}>
-                    <Loading/>
+                    <Loading />
                 </div>
             ) : (
-                <PaginatedItems itemsPerPage={21} items={data}/>
+                <PaginatedItems itemsPerPage={21} items={data} />
             )}
         </div>
     );

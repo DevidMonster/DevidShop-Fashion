@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles)
 
 function MenuGroup({ type = "href", title, list = [] }) {
-    return (  
+    return (
         <div className={cx('wrapper')}>
             <h1>{title}</h1>
             <ul className={cx('list')}>
-                {list.map(item => (
-                    <li>
+                {list.map((item, index) => (
+                    <li key={index}>
                         {type === "href" ? (
                             <a href={item.href} onClick={e => e.preventDefault()}>{item.title}</a>
                         ) : (

@@ -85,10 +85,10 @@ app.use('/item', itemRoutes);
 app.use('/banner', bannerRoutes);
 app.use('/comment', commentRoutes);
 app.use('/profile', profileRoutes);
-app.use('/contact', contactRoutes); 
+app.use('/contact', contactRoutes);
 
 //connect database
-mongoose.connect(process.env.MONGO_URL , {
+mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
@@ -96,7 +96,7 @@ mongoose.connect(process.env.MONGO_URL , {
         console.log(`Bạn đang chạy ở cổng: http://localhost:${port}`);
     });
 
-    /*ONLY ADD DATA ONE TIME*/ 
+    /*ONLY ADD DATA ONE TIME*/
     // About.insertMany([
     //     { image: "https://bizflyportal.mediacdn.vn/bizflyportal/1370/2428/2021/04/19/16/07/kin16188016359650.jpg", title: "About Us", content: "At DevidShop, we believe that fashion should be accessible and affordable to everyone. Our mission is to provide high-quality clothing at reasonable prices, without sacrificing style or comfort."},
     //     { image: "", title: "Our Story", content: "DevidShop was founded in 2015 by David Nguyen, a fashion enthusiast who wanted to create a brand that would cater to people of all ages and backgrounds. Starting out as a small online store, DevidShop quickly grew in popularity, thanks to our commitment to quality, affordability, and customer service.</p><p>Over the years, we've expanded our product line to include a wide variety of clothing and accessories, from casual wear to formal attire. We pride ourselves on staying up-to-date with the latest trends and styles, while also offering classic pieces that never go out of fashion."},

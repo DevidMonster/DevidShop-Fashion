@@ -8,6 +8,7 @@
 
 .top {
     display: flex;
+    flex-wrap: wrap;
     gap: 60px;
 
     .info {
@@ -15,7 +16,6 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-
 
         .logo_box {
             height: 100%;
@@ -66,6 +66,7 @@
 
     .ft_session {
         flex: 2;
+        flex-wrap: wrap;
         display: flex;
         gap: 60px;
     }
@@ -126,4 +127,31 @@
 
     margin-top: 60px;
     width: 100%;
+}
+
+@media (max-width: 767px) {
+    .info {
+        flex: unset !important;
+        width: 100%;
+    }
+
+    .ft_session {
+        flex: unset !important;
+        gap: 10px !important;
+        width: 100%;
+    }
+}
+
+@media (max-width: 660px) {
+    .info {
+        flex: unset !important;
+        width: 100%;
+    }
+
+    .ft_session {
+        flex: unset !important;
+        gap: unset !important;
+        justify-content: space-between;
+        width: 100%;
+    }
 }
