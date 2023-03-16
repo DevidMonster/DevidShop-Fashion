@@ -3,6 +3,7 @@
 
     .container {
         margin: 60px 0;
+        overflow-x: scroll;
 
         .result {
             border-collapse: collapse;
@@ -56,9 +57,11 @@
 
 .promoCode_box {
     width: 30%;
+
     label {
         font-size: 1.2rem;
     }
+
     input {
         margin: 10px 0;
         width: 100%;
@@ -81,5 +84,3 @@
         width: 80%;
     }
 }
-
-
