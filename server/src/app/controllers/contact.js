@@ -9,7 +9,7 @@ const user = {
 const sendContact = async (req, res) => {
     try {
         let testAccount = await nodemailer.createTestAccount();
-        console.log(user);  
+        console.log(user);
         let transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
             service: 'gmail',
@@ -35,7 +35,7 @@ const sendContact = async (req, res) => {
                 </p>
             `
         }
-        await transporter.sendMail(mailOptions,async (error, info) => {
+        await transporter.sendMail(mailOptions, async (error, info) => {
             if (error) {
                 res.status(404).send(error)
             } else {
@@ -44,10 +44,10 @@ const sendContact = async (req, res) => {
                 res.status(200).send('Email sent: ' + info.response)
             }
         })
-        
+
         transporter.close();
     } catch (err) {
-        res.status(404).json({message: err.message})
+        res.status(404).json({ message: err.message })
     }
 }
 module.exports = { sendContact }
