@@ -11,7 +11,7 @@ const app = express();
 require('dotenv').config();
 
 const port = process.env.PORT || 3000;
-var whitelist = ['https://www.quangdang.ml', 'http://localhost:8000']
+var whitelist = ['https://devid-shop-fashion.vercel.app', 'http://localhost:8000']
 var corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {
