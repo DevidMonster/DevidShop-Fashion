@@ -22,7 +22,9 @@ var corsOptions = {
     }
 }
 
-app.use(cors(corsOptions));
+app.use(cors({
+    origin: true
+}));
 mongoose.set('strictQuery', false)
 
 const User = require('./app/models/user');
