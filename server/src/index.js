@@ -83,6 +83,7 @@ app.use(function (req, res, next) {
 
 //Routes
 const generalRoutes = require('./routes/general');
+const tokenRoutes = require('./routes/token');
 const categoryRoutes = require('./routes/category');
 const itemRoutes = require('./routes/Item');
 const bannerRoutes = require('./routes/banner');
@@ -94,6 +95,7 @@ app.use('/general', generalRoutes);
 app.use('/category', categoryRoutes);
 app.use('/item', itemRoutes);
 app.use('/banner', bannerRoutes);
+app.use('/api', tokenRoutes);
 app.use('/comment', commentRoutes);
 app.use('/profile', profileRoutes);
 app.use('/contact', contactRoutes);
